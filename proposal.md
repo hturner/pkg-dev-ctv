@@ -157,7 +157,7 @@ reported but not causing an error.
 
 WRE reference: [Package subdirectories](https://cran.r-project.org/doc/manuals/R-exts.html#Package-subdirectories)
 
-CONSIDER: valtools, vdiffr, httptest2, tinytest, vcr
+CONSIDER: valtools, vdiffr, httptest2, tinytest, vcr, dgkf/testex
 
 SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#unit-testing, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#unit-testing-
 
@@ -385,7 +385,7 @@ announces planned R releases, indicating when it is a good time to [test release
     repositories of crucial upstream dependencies, to track their
     development.
     
-CONSIDER: foghorn, badger::badge_cran_checks()
+CONSIDER: foghorn, badger::badge_cran_checks(), wurli/updateme
 
 ## Links {#links}
 
