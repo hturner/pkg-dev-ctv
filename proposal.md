@@ -1,6 +1,11 @@
-# Package Development and Maintenance
-
-Contributors: Roger Bivand, Heather Turner, Lluís Revilla 
+---
+name: Package Development
+topic: PackageDevelopment
+maintainer: Roger Bivand, Heather Turner, Lluís Revilla Sancho
+email: , , lluis.revilla@gmail.com
+version: 2024-03-03
+source: https://github.com/cran-task-views/PackageDevelopment/
+---
 
 ## Introduction
 
