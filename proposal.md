@@ -55,10 +55,11 @@ pages (all the CRAN packages except those for Windows only and some from
 Bioconductor), vignettes or task views, using the search engine at
 <http://search.r-project.org/>.
 
-CONSIDER: Metacran, https://rdrr.io/. 
+CONSIDER: Metacran: <https://www.r-pkg.org/>,
+<https://rdrr.io/>. 
 
 SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#searching-for-existing-packages> (N.B. https://www.rdocumentation.org/ is an advertising venue for Datacamp, do we want to promote this?)
+<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#searching-for-existing-packages>
 
 ### Intializing a package
 
@@ -68,14 +69,16 @@ code files provided to appropriate places, and creates skeleton help
 files and a Read-and-delete-me file describing further steps in
 packaging.
 
-Some contributed packages provide literate programming frameworks to construct 
-packages from code embedded in text documents, or frameworks for special types 
-of packages such as Shiny apps or metapackages.
+WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
 
-WRE reference: [Package
-Structure](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
+ - `r pkg("usethis", priority = "core")` has many utilities to setup the structure of the package, including a NEWS file and adding dependencies in the README.
+ - `r pkg("pkgKitten")` provides an almost empty package skeleton and some utilities to create help pages.
+ - `r bioc("biocthis")` prepares for Bioconductor repository.
 
-CONSIDER: usethis, biocthis, fusen, litr, noweb, rfold, many, DataPackageR
+Some packages like `r pkg("fusen")` and `r github("jacobbien/litr-project")` prepare a project from an R markdown file. 
+`r pkg("noweb")` allows to use literate programming to create the package.
+There are others that help packaging several R files, `r pkg("rfold")`, or create a package from a dataset `r pkg("DataPackageR")`.
+Others, like `r pkg("cookiecutter")` can create a new package from a template stored elsewhere. 
 
 SEE ALSO:  
 <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#initializing-an-r-package>,
