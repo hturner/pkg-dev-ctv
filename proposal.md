@@ -71,9 +71,9 @@ packaging.
 
 WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
 
-The `r pkg("usethis", priority = "core")` package has many utilities to setup the structure of the package, including a NEWS file and adding dependencies in the README.
-The `r pkg("pkgKitten")` package provides an almost empty package skeleton and some utilities to create help pages.
-The `r bioc("biocthis")` package prepares for Bioconductor repository.
+ - `r pkg("usethis", priority = "core")` has many utilities to setup the structure of the package, including a NEWS file and adding dependencies in the README.
+ - `r pkg("pkgKitten")` provides an almost empty package skeleton and some utilities to create help pages.
+ - `r bioc("biocthis")` prepares for Bioconductor repository.
 
 Some packages like `r pkg("fusen")` and `r github("jacobbien/litr-project")` prepare a project from an R markdown file. 
 `r pkg("noweb")` allows to use literate programming to create the package.
