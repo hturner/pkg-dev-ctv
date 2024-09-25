@@ -66,20 +66,20 @@ code files provided to appropriate places, and creates skeleton help
 files and a Read-and-delete-me file describing further steps in
 packaging.
 
+When initializing a package, it is worth considering how it should be licensed. The CRAN Repository Policy links to a [database of licenses acceptable for CRAN](https://svn.r-project.org/R/trunk/share/licenses/license.db).
+
 WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
 
+ - `r pkg("available")` checks whether a package name is valid and available, i.e., not already in use on CRAN, Bioconductor or GitHub. Also checks for unintended meanings of the name. `r pkg("collidr")` checks for collisions between a package or function name and existing names of packages and/or functions on CRAN.
  - `r pkg("usethis", priority = "core")` has many utilities to setup the structure of the package, including a NEWS file and adding dependencies in the README.
  - `r pkg("pkgKitten")` provides an almost empty package skeleton and some utilities to create help pages.
- - `r bioc("biocthis")` prepares for Bioconductor repository.
-
-Some packages like `r pkg("fusen")` and `r github("jacobbien/litr-project")` prepare a project from an R markdown file. 
-`r pkg("noweb")` allows to use literate programming to create the package.
-There are others that help packaging several R files, `r pkg("rfold")`, or create a package from a dataset `r pkg("DataPackageR")`.
-Others, like `r pkg("cookiecutter")` can create a new package from a template stored elsewhere. 
-
-SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#initializing-an-r-package>,
-<https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#package-templates->, <https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#naming-things->
+ - `Rcpp.package.skeleton()` from `r pkg("Rcpp")` extends `package.skeleton()` to add the components required to use `r pkg("Rcpp")` for interfacing C or C++ code in R packages. `r pkg("usethis")` provide similar functionality with the `use_c()` and `use_rcpp()` functions.
+ - `r bioc("biocthis")` automates setup for Bioconductor packages.
+ - `r github("r.pkg.template")` initializes a GitHub repository for an R package, with the standard files and directories, along with CI/CD configurations and pre-commit git hooks to identify and resolve common issues.
+ - `r pkg("fusen")` and `r github("jacobbien/litr-project")` create a package from a R markdown file. `r pkg("noweb")` creates a package via literate programming with noweb syntax (as used by Sweave).
+ - `r pkg("DataPackageR")` creates a package from a dataset. `r pkg("rcompendium")` creates the structure for a Research Compendium: an R package structure to support repreoducible research including raw data, analysis scripts, outputs and a make script.
+ - `r pkg("leprechaun")` adds templating code to a package skeleton for creating a Shiny app as a package, without adding to the dependencies. `r pkg("golem")` creates a package template for developing and deploying a Shiny app using the `r pkg("golem")` framework.
+ - `r pkg("pkgverse")` creates a meta package that bundles several related packages that can be installed and loaded together.
 
 ## Package development
 
