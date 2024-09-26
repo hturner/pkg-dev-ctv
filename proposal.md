@@ -48,14 +48,15 @@ package that does not yet exist.
 
 The CRAN Team occasionally use the [R-package-devel mailing list](https://stat.ethz.ch/mailman/listinfo/r-package-devel) to ask for maintainers to take on orphaned packages.
 
-The [CRAN Search](https://cran.r-project.org/search.html) page links to R-focused search tools maintained by the community.
+The [CRAN Search](https://cran.r-project.org/search.html) page links to R-focused search tools, facilitating search of package sources, books, task views, support lists, blogs and the internet at large.
 
 `utils::RSiteSearch()` facilitates search for keywords/phrases in help
 pages (all the CRAN packages except those for Windows only and some from
-Bioconductor), vignettes or task views, using the search engine at
+Bioconductor), package metadata, vignettes or task views, using the search engine at
 <http://search.r-project.org/>.
 
 - rOpenSci maintain a [Help Wanted](https://ropensci.org/help-wanted/) page that can be used to search for rOpenSci packages looking for (co-)maintainers. The [Wishlist](https://discuss.ropensci.org/c/wishlist/6) channel of the rOpenSci forum is used to discuss ideas for new packages/features.
+- [Bioconductor Code Search](https://code.bioconductor.org/search/) is an official tool to search the source files of Bioconductor packages.
 - [cran GitHub mirror](https://github.com/cran), an unofficial read-only mirror of all CRAN packages (including archived packages), enables search across the full package source files using [GitHub Code Search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax).
 
 ### Intializing a package
