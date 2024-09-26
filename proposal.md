@@ -95,10 +95,11 @@ See the [Links](#links) section for other guides, including those from
 [Bioconductor](https://www.bioconductor.org/) and
 [rOpenSci](https://ropensci.org/).
 
-CONSIDER: gpttools, command line tools like ComputationalProteomicsUnit/maker, rdatsci/rtcl
-
-SEE ALSO:  
-<https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#swiss-army-knives->
+ - `r pkg("devtools", priority = "core")` facilitates interactive development of R and compiled code via the `load_all()` function to simulate installing and reloading the package. Additional functions support adding documentation, testing, checking a package and submitting to CRAN.
+ - `r pkg("packager")` performs package development tasks (document, build, check, etc) with `r pkg("fakemake")` or GNU make, so that make targets are only regenerated when files in the make chain have been updated. Provides a `create()` function to initialize a package with the required structure and an `infect()` function to work with a package initialized another way. The `r github("ComputationalProteomicsUnit/maker")` repository provides an external Makefile to perform development tasks.
+ - `r github("rdatsci/rtcl")` provides command line utilities for development tasks, which are also provided as regular R functions.
+ - `r pkg("pkgmaker")` provides utilities for working with package-specific options, registry objects (as defined by `r pkg("registry")`), vignettes, unit tests and BibTeX. Serves as an incubator for tools that may later be packages separately.
+ - `r github("JamesHWade/gpttools")` facilitates using large language models (from an AI service provider or a local model) for package development, e.g. converting code to a function, adding documentation or tests, identifying improvements.
 
 ### Package documentation
 
