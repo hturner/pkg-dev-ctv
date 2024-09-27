@@ -125,9 +125,9 @@ CONSIDER: rmarkdown::html_vignette, markdown::html_format as more lightweight al
 
 #### Other forms of documentation
 
-- `r pkg("rdoxygen")` creates Doxygen documentation for C++ code in packages, optionally made available as a vignette.
-- `r pkg("pkgdown")` generates a package website based on standard documentation files with the option to complement this with additional content, such as externally hosted `r pkg("learnr")` tutorials. There are helpers for deploying the site on GitHub Pages. 
+- `r pkg("pkgdown", , priority = "core")` generates a package website based on standard documentation files with the option to complement this with additional content, such as externally hosted `r pkg("learnr")` tutorials. There are helpers for deploying the site on GitHub Pages. 
 - `r pkg("altdoc")` is designed as a lightweight alternative to `r pkg("pkgdown")` with support for many documentation generators, including Quarto, Docute, Docsify, and MkDocs.
+- `r pkg("rdoxygen")` creates Doxygen documentation for C++ code in packages, optionally made available as a vignette.
 
 ### Package metadata and information files
 
