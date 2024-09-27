@@ -117,11 +117,16 @@ WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/ma
 
 #### Vignettes
 
-The default format for vignettes is Sweave format with special metadata described in WRE. `R CMD build` will run `utils::Sweave` to build the vignettes as part of the package.
+The default format for vignettes is Sweave format with special metadata described in WRE. `R CMD build` will run `utils::Sweave()` to build the vignettes as part of the package.
 
 WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes)
 
-CONSIDER: rmarkdown::html_vignette, markdown::html_format as more lightweight alternative c.f. https://github.com/Rdatatable/data.table/pull/5773
+- `r pkg("knitr", priority = "core")` provides vignette engines to compile HTML and PDF vignettes via `knit()`. The `knit::rmarkdown` engine can be used with the `html_vignette()` output format from `r pkg("rmarkdown")`, which is a lightweight alternative to `knitr::html_document()`. Using the `knit::knitr` engine with `html_format()` from `r pkg("markdown")` produces similar results with far fewer dependencies (as `r pkg("rmarkdown")` is no longer required).
+- `r pkg("litedown", priority = "core")` provides a vignette engine that can be used with its own output formats for HTML and PDF. It is designed to have minimal dependencies and produce lightweight HTML files.
+- `r pkg("quarto")` provides a vignette engine that fixes configurations of the HTML format to produce a lightweight file. 
+- `r pkg("prettydoc")` provides `html_pretty()` as an alternative to `rmarkdown::html_vignette` that produces lightweight files with fancier themes.
+- `r pkg("R.rsp")` provides facilities to include static PDF or HTML vignettes; compile vignettes from plain LaTeX files, and render PDF or HTML vignettes with the `R.rsp::rsp` engine to use RSP pre-processing directives (e.g., include an external file or use document metadata) and code expressions that allow looping over text with code snippets.
+
 
 #### Other forms of documentation
 
