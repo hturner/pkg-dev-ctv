@@ -129,13 +129,17 @@ CONSIDER: pkgdown, learnr
 
 ### Package metadata and information files
 
-`tools::CRAN_package_db` returns a data frame with character columns containing most `DESCRIPTION` metadata for the current packages in the CRAN package repository.
+`tools::CRAN_package_db()` returns a data frame with character columns containing most `DESCRIPTION` metadata for the current packages in the CRAN package repository.
 
-`utils::NEWS` can be used to extract the NEWS for a package and display it in a browser.
+`utils::NEWS()` can be used to extract the NEWS for a package and display it in a browser.
 
-CONSIDER: desc, thankr, badger
-
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#package-metadata-
+- `r pkg("desc")` provides tools to read, write, create, and manipulate DESCRIPTION files.
+- `r pkg("semver")` provides tools for operating on [semantic version strings](http://semver.org).
+- `r pkg("newsmd")` provides functions to create or update a `NEWS.md` file. `r pkg("fledge")` and `r pkg("autonewsmd")` generate `NEWS.md` from git commit messages following conventions specific to each package.
+- `r pkg("codemetar")`, or the leaner `r pkg("codemeta")`, convert metadata from packages sources such as DESCRIPTION and CITATION to the CodeMeta `JSON-LD` format. This is a cross-language metadata standard used by search engines, software repositories etc. 
+- `r pkg("cffr")` and `r pkg("citation")` generate a `CITATION.cff` file from package metadata and provide utilities to work with such files, e.g. converting to/from `"bibentry"` objects (see `utils::bibentry()`). `r pkg("cffr")` provides helpers for maintenance via git. `CITATION.cff` is a cross-language citation file format recognized by software repositories and citation managers.
+- `r pkg("badger")` generates URLs for customised badges from providers such as [shields.io](https://shields.io/), commonly added to README files and package websites to display metadata such as current CRAN version.
+- `r pkg("allcontributors")` facilitates acknowledging all contributors to code and repository issues in the README.
 
 ### Package logos
 
