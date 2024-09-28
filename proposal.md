@@ -157,9 +157,31 @@ reported but not causing an error.
 
 WRE reference: [Package subdirectories](https://cran.r-project.org/doc/manuals/R-exts.html#Package-subdirectories)
 
-CONSIDER: valtools, vdiffr, httptest2, tinytest, vcr, dgkf/testex
+These packages provide some automation and helpers to test code:
+ - `r pkg("tinytest")` allows to install tests with the package with no further dependencies.
+ - `r pkg("testthat")` helpers for tests including snapshot tests. `r pkg("patrick")` allows to parameterize testing with testthat. `r pkg("hySpc.testthat")` attaches the tests to functions.
+ - `r pkg("RUnit")` provides test for the Unit Testing framework.
+ - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()`.
+ - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with testthat and tinytest.
+ - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
+ - `r pkg("unitizer")` provides testing helper that allows interactive unit tests.
+ - `r pkg("unittest")` testing using the Test Anything Protocol.
+ - `r pkg("exampletestr")` and `r pkg("doctest")` convert examples into tests to be run by testthat. `r pkg("testex")` converts documentation by roxygen2 into test to be run by testthat.
+ - `r pkg("cucumber")` write specifications in feature files using 'Gherkin' language.
+ - `r pkg("quickcheck")` checks against randomly generated input and compatible with testthat.
+ - `r pkg("xpectr")` provides tools for generating expectations in a systematic way.
+ 
 
-SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#unit-testing, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#unit-testing-
+Testing internet requests can be difficult to do it reliably. 
+One can use [this book "HTTP testing in R"](https://books.ropensci.org/http-testing/) to take inspiration:
+ - `r pkg("vcr")` records requests and replays them during future runs. 
+ - `r pkg("webmockr")` stubbing and setting expectations on 'HTTP' requests. 
+ - `r pkg("httptest2")` works for recording and saving requests made by the httr2 package without requiring access to the remote service.
+
+Other packages focused on specific areas:
+ - `r pkg("vdiffr")` provides helpers for graphical unit tests, testing visual differences.
+ - `r pkg("shinytest2")` provides a testing framework for Shiny applications.
+ - `r pkg("validate")` declares data validation rules and data quality indicators.
 
 #### Code coverage
 
