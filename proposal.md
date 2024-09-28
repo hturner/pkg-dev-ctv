@@ -58,8 +58,8 @@ Bioconductor), vignettes or task views, using the search engine at
 CONSIDER: Metacran: <https://www.r-pkg.org/>,
 <https://rdrr.io/>. 
 
-`r pkg("pkgsearch")`
-`r pkg("available")`
+ - `r pkg("pkgsearch")`
+ - `r pkg("available")`
 
 SEE ALSO:  
 <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#searching-for-existing-packages>
@@ -121,8 +121,8 @@ Source files for help pages use the "R documentation" (Rd) format.
 
 WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-R-documentation-files)
 
-`r pkg("roxygen2")`
-`r pkg("sinew")`
+ - `r pkg("roxygen2")`
+ - `r pkg("sinew")`
 
 #### Vignettes
 
@@ -140,15 +140,15 @@ Use markdown or R markdown for vignettes: `r pkg("rmarkdown")`
 The quarto engine for vignettes: `r pkg("quarto")`
 
 Extensions for Sweave in vignettes:
-`r pkg("svSweave")`
-`r pkg("RweaveExtra")`
+ - `r pkg("svSweave")`
+ - `r pkg("RweaveExtra")`
 
 #### Other forms of documentation
 
 CONSIDER: pkgdown, learnr
 
-`r pkg("pkgdown")`
-`r pkg("learnr")`
+ - `r pkg("pkgdown")`
+ - `r pkg("learnr")`
 
 ### Package metadata and information files
 
@@ -156,10 +156,10 @@ CONSIDER: pkgdown, learnr
 
 `utils::NEWS` can be used to extract the NEWS for a package and display it in a browser.
 
-`r pkg("desc")`
-`r pkg("thankr")`
-`r pkg("cffr")`
-`r pkg("codemeta")`
+ - `r pkg("desc")`
+ - `r pkg("thankr")`
+ - `r pkg("cffr")`
+ - `r pkg("codemeta")`
 CONSIDER: desc, thankr, badger, cffr, codemeta
 
 SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#package-metadata-
@@ -172,8 +172,8 @@ used to create promotional material such as stickers.
 
 SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#badges-and-stickers
 
-`r pkg("badger")`
-`r pkg("hexSticker")`
+ - `r pkg("badger")`
+ - `r pkg("hexSticker")`
 
 
 ### Packages tests
@@ -189,27 +189,43 @@ reported but not causing an error.
 WRE reference: [Package subdirectories](https://cran.r-project.org/doc/manuals/R-exts.html#Package-subdirectories)
 
 These packages provide some automation and helpers to test code:
-`r pkg("tinytest")`
-`r pkg("testthat")`
-`r pkg("RUnit")`
-`r pkg("testit")`
-`r pkg("testthis")`
-`r pkg("roxytest")`
+ - `r pkg("tinytest")` allows to install tests with the package with no further dependencies.
+ - `r pkg("testthat")` provides snapshot tests.
+ - `r pkg("RUnit")` provides test for the Unit Testing framework.
+ - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()`.
+ - `r pkg("testthis")` addins for running testthat in RStudio. 
+ - `r pkg("roxytest")` provides `r pkg("roxygen2")` roclets for testing with testthat and tinytest.
+ - `r pkg("roxut")` provides `r pkg("roxygen2")` roclets for testing with testthat and tinytest. 
+ - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
+ - `r pkg("unitizer")` provides test and allows interactive unit tests.
+ - `r pkg("unittest")` testing using the Test Anything Protocol.
+ - `r pkg("exampletestr")`
+ - `r pkg("testex")`
+ - `r pkg("doctest")`
+ - `r pkg("cucumber")`
+ - `r pkg("patrick")`
+ - `r pkg("hedgehog")`
+ - `r pkg("hypSpc.testthat")`
+ - `r pkg("xpectr")`
+ - `r pkg("valtools")`
+ - `r pkg("validate")`
+ - `r pkg("quickcheck")`
+ 
 
 Testing internet requests:
-`r pkg("vcr")`
-`r pkg("webmockr")`
-`r pkg("httptest2")`
+ - `r pkg("vcr")`
+ - `r pkg("webmockr")`
+ - `r pkg("httptest2")`
 
 Testing visual differences:
-`r pkg("vdiffr")`
+ - `r pkg("vdiffr")`
 
 Shiny:
-`r pkg("shinytest2")`
+ - `r pkg("shinytest2")`
 
-`r github("phuse-org/valtools")`
-`r github("ropensci-review-tools/autotest")`
-`r github("dgkf/testex")`
+ - `r github("phuse-org/valtools")`
+ - `r github("ropensci-review-tools/autotest")`
+ - `r github("dgkf/testex")`
 
 
 SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#unit-testing, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#unit-testing-
@@ -218,15 +234,15 @@ SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/R
 
 SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#code-coverage
 
-`r pkg("covr")`
-`r github("covrpage")`
+ - `r pkg("covr")`
+ - `r github("covrpage")`
 
 
 
 ### Working with package options
 
-`r pkg("options")`
-`r pkg("withr")`
+ - `r pkg("options")`
+ - `r pkg("withr")`
 
 SEE ALSO: <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#using-options-in-packages>
 
@@ -236,8 +252,8 @@ For simple interactive interfaces, `base::readline()` can be used to create a si
 
 `r pkg("tcltk")` is a base package that provides a large set of tools for creating interfaces uses Tcl/tk (most functions are thin wrappers around corresponding Tcl and tk functions).
 
-`r pkg("progress")` for progress bars.
-`r pkg("shiny")` for web applications.
+- `r pkg("progress")` for progress bars.
+- `r pkg("shiny")` for web applications.
 
 
 SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#creating-graphical-interfaces
@@ -251,17 +267,17 @@ Localization in R uses GNU `gettext` as described in the notes on [Translating R
 and updates corresponding PO files as required. `tools::checkPoFile` can be 
 used to check translation files for inconsistent format strings.
 
-`r pkg("potools")`
-`r pkg("aspell")` for checking the language for a specific localisation.
-`r github("eliocamp/rhelpi18n")` for setting help pages in different languages.
+- `r pkg("potools")`
+- `r pkg("aspell")` for checking the language for a specific localisation.
+- `r github("eliocamp/rhelpi18n")` for setting help pages in different languages.
 
 ### Building and installing a source package
 
 The standard tools to build and install a package are `R CMD build` and 
 `R CMD INSTALL`.
 
-`r pkg("pkgload")` to load from a local folder.
-`r pkg("remotes")` to install from several (remote) sources.
+- `r pkg("pkgload")` to load from a local folder.
+- `r pkg("remotes")` to install from several (remote) sources.
 
 ### Checking a package
 
@@ -399,22 +415,22 @@ based on a package database like that returned by `utils::available.packages`. R
 
 CONSIDER: `sessioninfo::session_info`, revdepcheck, prefixer, rcheology, tools like drat and miniCRAN
 
-`r github("dreamRs/prefixer")` prefixes functions with their namespace and other tools for writing functions / packages.
-`r pkg("rcheology")` provides a dataset with functions in all base and recommended packages of R versions 0.50 onwards to know upon which R version a package can depend. 
-`r pkg("drat")` and `r pkg("miniCRAN")` create mini repositories that can be used as Additional_repositories.  There is r-universe 
+ - `r github("dreamRs/prefixer")` prefixes functions with their namespace and other tools for writing functions / packages.
+ - `r pkg("rcheology")` provides a dataset with functions in all base and recommended packages of R versions 0.50 onwards to know upon which R version a package can depend. 
+ - `r pkg("drat")` and `r pkg("miniCRAN")` create mini repositories that can be used as Additional_repositories.  There is [r-universe](https://r-universe.org) to create it on github too.
 
 
 WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-Dependencies).
 
 
-`r pkg("CodeDepends")`
-`r pkg("cranly")`
+ - `r pkg("CodeDepends")`
+ - `r pkg("cranly")`
 
 
-`r pkg("pak")` `pkg_deps`, to look up the dependencies of a package, `pkg_deps_explain` explain how a package depends on other packages, `pkg_deps_tree`, draw the dependency tree of a package.
+ - `r pkg("pak")` `pkg_deps`, to look up the dependencies of a package, `pkg_deps_explain` explain how a package depends on other packages, `pkg_deps_tree`, draw the dependency tree of a package.
 
-`r github("r-lib/revdepcheck")`
-`r github("yihui/crandalf")`
+ - `r github("r-devel/recheck")`
+ - `r github("yihui/crandalf")`
 
 SEE ALSO:  
 <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#dependency-management>, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#dependency-management-%EF%B8%8F
@@ -427,11 +443,11 @@ It is also recommended to document those functions in a help page for each categ
 
 Other packages help with this process or provide more granular functionality or help to signal that:
 
-`r pkg("lifecycle")` with functions like `deprecate_soft()`, `deprecate_warn()` and `deprecate_stop()`
+ - `r pkg("lifecycle")` with functions like `deprecate_soft()`, `deprecate_warn()` and `deprecate_stop()`
 
-`r pkg("fledge")`
-`r pkg("newsmd")`
-`r pkg("autonewsmd")`
+ - `r pkg("fledge")`
+ - `r pkg("newsmd")`
+ - `r pkg("autonewsmd")`
 CONSIDER: lifecycle, TODOr, maybe diffify
 
 SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#change-log-and-versioning
@@ -440,9 +456,9 @@ SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-f
 
 The Posit CRAN Mirror counts downloads as well as the Bioconductor repository. 
 Several packages provides access to these: 
-`r pkg("cranlogs")` to access the CRAN downloads from that mirror.
-`r pkg("dlstats")` to access both CRAN and Bioconductor stats.
-`r pkg("packageRank")` to get the number of downloads taking into account the dependencies.
+ - `r pkg("cranlogs")` to access the CRAN downloads from that mirror.
+ - `r pkg("dlstats")` to access both CRAN and Bioconductor stats.
+ - `r pkg("packageRank")` to get the number of downloads taking into account the dependencies.
 
 SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#usage-
 
@@ -480,7 +496,7 @@ announces planned R releases, indicating when it is a good time to [test release
     repositories of crucial upstream dependencies, to track their
     development.
     
-`r pkg("foghorn")` to keep track of packages in the CRAN submission queue.
+ - `r pkg("foghorn")` to keep track of packages in the CRAN submission queue.
 There is also a live version updated hourly at [R-hub](https://r-hub.github.io/cransays/articles/dashboard.html).
 
 Having a badge showing the CRAN check status might be useful for users and developers.
