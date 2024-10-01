@@ -124,7 +124,8 @@ WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/ma
 - `r pkg("roxyglobals")` adds additional roxygen tags to generate R code defining global variables with `utils::globalVariables()`. This can be used to avoid false positives in the package check when functions in the package call functions that use non-standard evaluation.
 - `r github("moodymudskipper/devtag")` provides the `@dev` tag for creating developer documentation for unexported functions; `r github("ropensci-review-tools/srr")` adds tags to document adherence to rOpenSci's standards for software review.
 - `r pkg("Rdpack")` provides functions and Rd macros for developing documentation, e.g. adding template documentation for new arguments; importing references from BibTeX files, and evaluating R code then inserting the resulting output or graphic.
-- `r github("Genentech/rd2markdown")` converts Rd files to plain Markdown files; `r github("coolbutuseless/rd2list")` converts Rd files to an R list.
+- `r pkg("Rd2md")` converts Rd files to Markdown and creates a combined Markdown reference manual; `r github("Genentech/rd2markdown")` generates Markdown from a source Rd file or the help page of an installed package.
+- `r github("coolbutuseless/rd2list")` converts Rd files to an R list.
 
 #### Vignettes
 
