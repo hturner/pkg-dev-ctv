@@ -115,10 +115,10 @@ Source files for help pages use the "R documentation" (Rd) format.
 
 WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-R-documentation-files)
 
-- `r pkg("roxygen2", priority = "core")` provides the `roxygenise()` function to generate Rd files from comments with specific markup in R source files. When used with Markdown, roxygen2 can greatly reduce the markup required in the documentation source. Several [development workflow](#development-workflow) packages support creating documentation with roxygen2. 
-     `r pkg("Rd2roxygen")` provides functions to convert Rd files to roxygen2 comments.
-     `r pkg("roxygen2md")` replaces Rd syntax in roxygen2 comments with the Markdown equivalent.
+- `r pkg("roxygen2", priority = "core")` provides the `roxygenise()` function to generate Rd files from comments with specific markup in R source files. When used with Markdown, `r pkg("roxygen2")` can greatly reduce the markup required in the documentation source. Several [development workflow](#development-workflow) packages support creating documentation with `r pkg("roxygen2")`. 
 - `r pkg("sinew")` generates roxygen skeletons and updates the NAMESPACE and DESCRIPTION file as required; can be used to update as well as create royxgen documentation.  
+- `r pkg("Rd2roxygen")` provides functions to convert Rd files to `r pkg("roxygen2")` comments.
+- `r pkg("roxygen2md")` replaces Rd syntax in `r pkg("roxygen2")` comments with the Markdown equivalent.
 - `r pkg("roclang")` facilitates extracting components of documentation from an Rd file (in the same or another package) for reuse, by insertion in a roxygen comment.
 - `r pkg("pasteAsComment")` provides an RStudio addin to paste clipboard content as a roxygen block - useful for inserting examples; `r github("csgillespie/roxygen2Comment")` provides an RStudio addin to convert regular code to roxygen commented code and vice versa.
 - `r pkg("roxyglobals")` adds additional roxygen tags to generate R code defining global variables with `utils::globalVariables()`. This can be used to avoid false positives in the package check when functions in the package call functions that use non-standard evaluation.
