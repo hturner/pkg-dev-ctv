@@ -71,7 +71,7 @@ When initializing a package, it is worth considering how it should be licensed. 
 WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
 
  - `r pkg("available")` checks whether a package name is valid and available, i.e., not already in use on CRAN, Bioconductor or GitHub. Also checks for unintended meanings of the name. `r pkg("collidr")` checks for collisions between a package or function name and existing names of packages and/or functions on CRAN.
- - `r pkg("usethis", priority = "core")` has many utilities to setup the structure of the package, including a NEWS file and adding dependencies in the README.
+ - `r pkg("usethis", priority = "core")` provides `create_package()` to set up a minimal package structure, along with many utilities to add components, including the `use_*_license()` functions, where `*` is replaced by the license name.
  - `r pkg("pkgKitten")` provides an almost empty package skeleton and some utilities to create help pages.
  - `Rcpp.package.skeleton()` from `r pkg("Rcpp")` extends `package.skeleton()` to add the components required to use `r pkg("Rcpp")` for interfacing C or C++ code in R packages. `r pkg("usethis")` provide similar functionality with the `use_c()` and `use_rcpp()` functions.
  - `r bioc("biocthis")` automates setup for Bioconductor packages.
@@ -95,11 +95,12 @@ See the [Links](#links) section for other guides, including those from
 [Bioconductor](https://www.bioconductor.org/) and
 [rOpenSci](https://ropensci.org/).
 
- - `r pkg("devtools", priority = "core")` facilitates interactive development of R and compiled code via the `load_all()` function to simulate installing and reloading the package. Additional functions support adding documentation, testing, checking a package and submitting to CRAN.
+ - `r pkg("devtools", priority = "core")` facilitates interactive development of R and compiled code via the `load_all()` function to simulate installing and reloading the package. Additional functions support generating documentation, testing, checking a package and submitting to CRAN.
+ - `r pkg("usethis", priority = "core")` provides helpers to add new components such as `use_r()`, `use_data()`, `use_vignette()`, or `use_news_md()`, along with functions to support specific packages or workflows, such as `use_testthat()` or `use_git()`.
+ - `r pkg("pkgmaker")` provides utilities for working with package-specific options, registry objects (as defined by `r pkg("registry")`), vignettes, unit tests and BibTeX. Serves as an incubator for tools that may later be packaged separately.
  - `r pkg("packager")` performs package development tasks (document, build, check, etc) with `r pkg("fakemake")` or GNU make, so that make targets are only regenerated when files in the make chain have been updated. Provides a `create()` function to initialize a package with the required structure and an `infect()` function to work with a package initialized another way. The `r github("ComputationalProteomicsUnit/maker")` repository provides an external Makefile to perform development tasks.
  - `r github("rdatsci/rtcl")` provides command line utilities for development tasks, which are also provided as regular R functions.
  - `r github("unDocUMeantIt/roxyPackage")` provides the `roxy.package()` function to generate help files, vignettes and package-level documentation (e.g., NEWS and README) in both PDF and HTML; check and build packages, and manage a local package repository. Tasks can be performed individually or in combination.
- - `r pkg("pkgmaker")` provides utilities for working with package-specific options, registry objects (as defined by `r pkg("registry")`), vignettes, unit tests and BibTeX. Serves as an incubator for tools that may later be packaged separately.
  - `r github("JamesHWade/gpttools")` facilitates using large language models (from an AI service provider or a local model) for package development, e.g. converting code to a function; adding documentation or tests, or identifying improvements.
 
 ### Package documentation
