@@ -150,7 +150,8 @@ To help promote packages, it has become popular to create hexagon-shaped logos
 that may be used in package documentation or information files and may be 
 used to create promotional material such as stickers.
 
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#badges-and-stickers
+- `r pkg("hexSticker")` creates hex sticker designs based on R plots or image files.
+- `r github("mitchelloharawild/hexwall")` generates an image of tesselated hex sticker designs.
 
 ### Packages tests
 
