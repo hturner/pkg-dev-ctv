@@ -29,7 +29,7 @@ To assist package developers, this task view collates contributed packages with
 reference to relevant sections of WRE, highlighting relevant functionality from 
 base/recommended packages before alternative/supplementary tools.
 
-If you think that some package is missing from the Task View, please file an issue in the GitHub repository or contact the maintainer(s).
+If you think that some package is missing from the task view, please file an issue in the GitHub repository or contact the maintainer(s).
 
 ## First steps
 
@@ -179,13 +179,17 @@ CONSIDER: options, withr::with_options
 
 SEE ALSO: <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#using-options-in-packages>
 
-### Creating graphical user interfaces
+### Creating user interfaces
 
-For simple interactive interfaces, `base::readline()` can be used to create a simple prompt. `utils::menu()`, `utils::select.list()` can provide graphical and console-based selection of items from a list, and `utils::txtProgressBar()` provides a simple text progress bar.
+For simple interactive interfaces, `base::readline()` can be used to create a basic prompt. `utils::menu()`, `utils::select.list()` can provide graphical and console-based selection of items from a list, and `utils::txtProgressBar()` provides a text progress bar.
 
-`tcltk` is a base package that provides a large set of tools for creating interfaces uses Tcl/tk (most functions are thin wrappers around corresponding Tcl and tk functions).
+`tcltk` is a base package that provides a large set of tools for creating graphical interfaces using Tcl/Tk (most functions are thin wrappers around corresponding Tcl and Tk functions).
 
-SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#creating-graphical-interfaces
+  * `r pkg(tcltk2)` provides additional Tcl commands and Tk widgets to supplement tcltk. 
+  * `r pkg(fgui)` facilitates rapid generation of a Tcl/Tk interface to one or multiple functions.
+  * `r pkg(getPass)` provides interfaces for securely requesting a passphrase, masking the characters typed in by the user. A GUI is used where possible, with fallback to a terminal interface.
+  * `r pkg(progress)` provides configurable text progress bars, for R and C++.
+  * `r pkg(shiny)` provides a framework to create browser-based interfaces, from function dialogues to more complex interactive web applications, that can be run locally with `runApp()` or deployed as static web or dynamic websites. See the [Web Technologies and Services](https://cran.r-project.org/web/views/WebTechnologies.html#frameworks) task view for other frameworks for building R-based web applications.
 
 ### Localisation
 
