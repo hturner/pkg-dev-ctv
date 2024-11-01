@@ -190,7 +190,8 @@ SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/R
 
 #### Code coverage
 
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#code-coverage
+- `r pkg(covr, priority = "core")` track and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
+- `r pkg(covtracer)` links tested code to documentation, to evaluate coverage of documented behaviours.
 
 ### Working with package options
 
