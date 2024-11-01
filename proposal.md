@@ -220,19 +220,19 @@ For simple interactive interfaces, `base::readline()` can be used to create a ba
   * `r pkg(progress)` provides configurable text progress bars, for R and C++.
   * `r pkg(shiny)` provides a framework to create browser-based interfaces, from function dialogues to more complex interactive web applications, that can be run locally with `runApp()` or deployed as static web or dynamic websites. See the [Web Technologies and Services](https://cran.r-project.org/web/views/WebTechnologies.html#frameworks) task view for other frameworks for building R-based web applications.
 
-### Localisation
+### Localization
 
 Packages might be addressed to people using a different language and locale. 
 Localization in R uses GNU `gettext` as described in the notes on [Translating R Messages](https://developer.r-project.org/Translations30.html) which uses translations stored in PO files. 
-This approach has the advantage of being supported by general translation software such as [Poedit](https://poedit.net/).
 
 `tools::update_pkg_po()` creates or updates the PO template (`.pot`) files for a package, 
 and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` can be 
 used to check translation files for inconsistently formatted strings.
 
 * `r pkg(potools)` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
-* Alternative mechanisms for localisation are provided by `r pkg(stranslate)` 
+* Alternative mechanisms for localization of R messages are provided by `r pkg(stranslate)` 
 and `r pkg(translated)`, using plain text and JSON files respectively. 
+* `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
 
 ### Building and installing a source package
 
