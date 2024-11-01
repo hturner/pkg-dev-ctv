@@ -161,7 +161,7 @@ These packages provide some automation and helpers to test code:
  - `r pkg("tinytest")` allows to add tests to a package with no further dependencies and includes the tests in the installed package, making them available to users.
  - `r pkg("testthat")` helpers for tests including snapshot tests. `r pkg("patrick")` allows to parameterize testing with testthat. `r pkg("hySpc.testthat")` attaches the tests to functions.
  - `r pkg("RUnit")` and `r pkg("svUnit")` provides alternative unit testing frameworks, similar to `r pkg("testthat")`
- - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()`.
+ - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()` for a simple unit testing interface with minimal dependencies.
  - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with testthat and tinytest.
  - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
  - `r pkg("unitizer")` provides testing helper that allows interactive unit tests.
