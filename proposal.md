@@ -158,7 +158,7 @@ reported but not causing an error.
 WRE reference: [Package subdirectories](https://cran.r-project.org/doc/manuals/R-exts.html#Package-subdirectories)
 
 These packages provide some automation and helpers to test code:
- - `r pkg("tinytest")` allows to install tests with the package with no further dependencies.
+ - `r pkg("tinytest")` allows to add tests to a package with no further dependencies and includes the tests in the installed package, making them available to users.
  - `r pkg("testthat")` helpers for tests including snapshot tests. `r pkg("patrick")` allows to parameterize testing with testthat. `r pkg("hySpc.testthat")` attaches the tests to functions.
  - `r pkg("RUnit")` provides test for the Unit Testing framework.
  - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()`.
