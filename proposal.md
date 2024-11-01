@@ -195,6 +195,10 @@ SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/R
 
 ### Package-specific options
 
+A simple way to implement package-specific options is to set global options with 
+a package-specific prefix, but there are several packages that provide more 
+refined and robust management of options.
+
 - `r pkg("options")` provides helpers to define and document package-specific options, managed via `base::options()`, with corresponding environment variables. The options can be set globally or locally (e.g., within a function).
 - `r pkg("GlobalOption")` provides similar functionality to `r pkg("options")`, with extra features such as option validation, setting options as functions of other options, and secret or read-only options.
 - `r pkg("potions")` provides the `brew()` and `pour()` functions, that can be used to store and retrieve package-specific global options, without over-writing any global options of the same name.
