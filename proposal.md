@@ -193,11 +193,19 @@ SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/R
 - `r pkg(covr, priority = "core")` track and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
 - `r pkg(covtracer)` links tested code to documentation, to evaluate coverage of documented behaviours.
 
-### Working with package options
+### Package-specific options
 
-CONSIDER: options, withr::with_options
+A simple way to implement package-specific options is to set global options with 
+a package-specific prefix, but there are several packages that provide more 
+refined and robust management of options.
 
-SEE ALSO: <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#using-options-in-packages>
+- `r pkg("options")` provides helpers to define and document package-specific options, managed via `base::options()`, with corresponding environment variables. The options can be set globally or locally (e.g., within a function).
+- `r pkg("GlobalOption")` provides similar functionality to `r pkg("options")`, with extra features such as option validation, setting options as functions of other options, and secret or read-only options.
+- `r pkg("potions")` provides the `brew()` and `pour()` functions, that can be used to store and retrieve package-specific global options, without over-writing any global options of the same name.
+- `r pkg("settings")` allows to set up a package-specific options manager, for setting global or local options, with optional validation rules.
+- `r pkg("futile.options")` allows to set up a package-specific options manager for global options.
+- `r pkg("pkgconfig")` allows packages to set package-specific values of global options, that can be queried by other packages.
+- `r pkg("withr")` provides the `local_options()` function to temporarily change global options within the scope of a function.
 
 ### Creating graphical user interfaces
 
