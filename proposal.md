@@ -174,7 +174,7 @@ These packages provide some automation and helpers to test code:
 
 Testing internet requests can be difficult to do it reliably. 
 One can use [this book "HTTP testing in R"](https://books.ropensci.org/http-testing/) to take inspiration:
- - `r pkg("vcr")` records requests and replays them during future runs. 
+ - `r pkg("vcr")` records HTTP requests and replays them during future runs. 
  - `r pkg("webmockr")` stubbing and setting expectations on 'HTTP' requests. 
  - `r pkg("httptest2")` works for recording and saving requests made by the httr2 package without requiring access to the remote service.
 
