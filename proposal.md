@@ -168,7 +168,7 @@ These packages provide some automation and helpers to test code:
  - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
  - `r pkg("exampletestr")` and `r pkg("doctest")` convert examples into tests to be run by testthat. `r pkg("testex")` converts documentation by roxygen2 into tests to be run by testthat.
  - `r pkg("cucumber")` integrates with testthat to run tests specified using the 'Gherkin' language to describe high level scenarios, e.g. when <I do this>, then <this should happen>.
- - `r pkg("quickcheck")` checks against randomly generated inputs and is compatible with testthat.
+ - `r pkg("quickcheck")` and `r pkg("autotest")` check against randomly generated inputs and are compatible with testthat. 
  - `r pkg("xpectr")` provides tools for generating expectations for testthat tests in a systematic way.
  
 
@@ -177,11 +177,14 @@ One can use [this book "HTTP testing in R"](https://books.ropensci.org/http-test
  - `r pkg("vcr")` records HTTP requests and replays them during future runs. 
  - `r pkg("webmockr")` stubbing (generating dummy results) and setting expectations on 'HTTP' requests. 
  - `r pkg("httptest2")` works for recording and saving requests made by the httr2 package without requiring access to the remote service.
+ - `r pkg("webfakes")` allows to create and launch fake apps in test files, for testing complex behaviour.
 
 Other packages focused on specific areas:
  - `r pkg("gdiff")` and `r pkg("vdiffr")` provide helpers for visual tests on graphical output. vdiffr integrates with testthat and provides a Shiny app to manage test cases.
  - `r pkg("shinytest2")` provides a testing framework for Shiny applications.
  - `r pkg("validate")` declares data validation rules and data quality indicators.
+ - `r pkg("mcunit")` helps with unit testing MCMC methods.
+ - `r pkg("checkmate")` and `r pkg("testdate")` package which extend testthat for data structures unit testing.
 
 #### Code coverage
 
