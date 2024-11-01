@@ -132,11 +132,15 @@ WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/ma
 
 #### Vignettes
 
-The default format for vignettes is Sweave format with special metadata described in WRE. `R CMD build` will run `utils::Sweave` to build the vignettes as part of the package.
+The default format for vignettes is Sweave format with special metadata described in WRE. `R CMD build` will use `utils::Sweave()` as the default *vignette engine* to build a vignette. Alternative vignette engines can be specified in the metadata in the form `<package>::<engine>`.
 
-WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes)
+WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes), especially [Non-Sweave vignettes](https://cran.r-project.org/doc/manuals/R-exts.html#Non_002dSweave-vignettes-1)
 
-CONSIDER: rmarkdown::html_vignette, markdown::html_format as more lightweight alternative c.f. https://github.com/Rdatatable/data.table/pull/5773
+- `r pkg("knitr", priority = "core")` provides vignette engines to compile HTML and PDF vignettes. The `knitr::rmarkdown` engine can be used with the `rmarkdown::html_vignette()` format, which is a lightweight alternative to `knitr::html_document()`. For mathematics to render offline, the `math_method` argument of `rmarkdown::html_vignette()` should be set to `"katex"` or `"r-katex"`.
+- `r pkg("litedown", priority = "core")` provides a vignette engine that can be used with its own output formats for HTML and PDF. It is designed to have minimal dependencies and produce lightweight HTML files. It has sufficient features for most vignettes (e.g., table of contents, cross-references, citations) and is recommended unless richer features are required.
+- `r pkg("quarto")` provides a vignette engine that fixes configurations of the HTML format to produce a lightweight file. This may be preferred for richer features (equivalent to Sweave) or re-using material already using Quarto. Since `r pkg("quarto")` depends on `r pkg("rmarkdown")`, and adds Quarto as a system dependency, this option is dependency-heavy.
+- `r pkg("prettydoc")` provides `html_pretty()` as an alternative to `rmarkdown::html_vignette` that produces lightweight files with fancier themes.
+- `r pkg("R.rsp")` provides facilities to include static PDF or HTML vignettes; compile vignettes from plain LaTeX files, and render PDF or HTML vignettes with the `R.rsp::rsp` engine to use RSP pre-processing directives (e.g., include an external file or use document metadata) and code expressions that allow looping over text with code snippets.
 
 #### Other forms of documentation
 
