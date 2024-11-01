@@ -195,7 +195,7 @@ These packages provide some automation and helpers to test code:
  - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
  - `r pkg("exampletestr")` and `r pkg("doctest")` convert examples into tests to be run by testthat. `r pkg("testex")` converts documentation by roxygen2 into tests to be run by testthat.
  - `r pkg("cucumber")` integrates with testthat to run tests specified using the 'Gherkin' language to describe high level scenarios, e.g. when <I do this>, then <this should happen>.
- - `r pkg("quickcheck")` and `r pkg("autotest")` check against randomly generated inputs and are compatible with testthat. 
+ - `r pkg("quickcheck")` and `r github("ropensci-review-tools/autotest")` check against randomly generated inputs and are compatible with testthat. 
  - `r pkg("xpectr")` provides tools for generating expectations for testthat tests in a systematic way.
  
 
