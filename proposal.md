@@ -165,7 +165,7 @@ These packages provide some automation and helpers to test code:
  - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with testthat and tinytest.
  - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
  - `r pkg("unitizer")` provides a testing framework for interactive regression testing, making it simpler to review and debug tests.
- - `r pkg("unittest")` testing using the Test Anything Protocol.
+ - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
  - `r pkg("exampletestr")` and `r pkg("doctest")` convert examples into tests to be run by testthat. `r pkg("testex")` converts documentation by roxygen2 into test to be run by testthat.
  - `r pkg("cucumber")` write specifications in feature files using 'Gherkin' language.
  - `r pkg("quickcheck")` checks against randomly generated input and compatible with testthat.
