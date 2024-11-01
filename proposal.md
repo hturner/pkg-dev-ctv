@@ -223,13 +223,16 @@ For simple interactive interfaces, `base::readline()` can be used to create a ba
 ### Localisation
 
 Packages might be addressed to people using a different language and locale. 
-Localization in R uses GNU `gettext` as described in the notes on [Translating R Messages](https://developer.r-project.org/Translations30.html) which uses translations stored in PO files.
+Localization in R uses GNU `gettext` as described in the notes on [Translating R Messages](https://developer.r-project.org/Translations30.html) which uses translations stored in PO files. 
+This approach has the advantage of being supported by general translation software such as [Poedit](https://poedit.net/).
 
-`tools:update_pkg_po` creates or updates the PO template files for a package, 
-and updates corresponding PO files as required. `tools::checkPoFile` can be 
-used to check translation files for inconsistent format strings.
+`tools::update_pkg_po()` creates or updates the PO template (`.pot`) files for a package, 
+and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` can be 
+used to check translation files for inconsistently formatted strings.
 
-CONSIDER: potools, https://github.com/eliocamp/rhelpi18n
+* `r pkg(potools)` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
+* Alternative mechanisms for localisation are provided by `r pkg(stranslate)` 
+and `r pkg(translated)`, using plain text and JSON files respectively. 
 
 ### Building and installing a source package
 
