@@ -209,9 +209,10 @@ refined and robust management of options.
 
 ### Creating user interfaces
 
-For simple interactive interfaces, `base::readline()` can be used to create a basic prompt. `utils::menu()`, `utils::select.list()` can provide graphical and console-based selection of items from a list, and `utils::txtProgressBar()` provides a text progress bar.
+For simple interactive interfaces, `base::readline()` can be used to create a basic prompt, while `utils::askYesNo()` prompts for a set response, by default "Yes" or "No". 
+`utils::menu()` and `utils::select.list()` can provide graphical and console-based selection of items from a list, respectively. `utils::txtProgressBar()` provides a text progress bar.
 
-`tcltk` is a base package that provides a large set of tools for creating graphical interfaces using Tcl/Tk (most functions are thin wrappers around corresponding Tcl and Tk functions).
+`tcltk` is a base package (not loaded by default) that provides a large set of tools for creating graphical interfaces using Tcl/Tk. most functions are thin wrappers around the corresponding Tcl and Tk functions.
 
   * `r pkg(tcltk2)` provides additional Tcl commands and Tk widgets to supplement tcltk. 
   * `r pkg(fgui)` facilitates rapid generation of a Tcl/Tk interface to one or multiple functions.
