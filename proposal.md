@@ -167,7 +167,7 @@ These packages provide some automation and helpers to test code:
  - `r pkg("unitizer")` provides a testing framework for interactive regression testing, making it simpler to review and debug tests.
  - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
  - `r pkg("exampletestr")` and `r pkg("doctest")` convert examples into tests to be run by testthat. `r pkg("testex")` converts documentation by roxygen2 into tests to be run by testthat.
- - `r pkg("cucumber")` write specifications in feature files using 'Gherkin' language.
+ - `r pkg("cucumber")` integrates with testthat to run tests specified using the 'Gherkin' language to describe high level scenarios, e.g. when <I do this>, then <this should happen>.
  - `r pkg("quickcheck")` checks against randomly generated input and compatible with testthat.
  - `r pkg("xpectr")` provides tools for generating expectations in a systematic way.
  
