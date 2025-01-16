@@ -266,7 +266,7 @@ The standard tools to build and install a package are `R CMD build` and
 
 - `r pkg("pkgbuild")` provides the `build()` function to build R packages and has several utilities to facilitate building packages with compiled code.
 - `r pkg("pkgload")` simulates the process of installing a package and then attaching it, enabling rapid iterative development.
-- There are many packages to facilitate installing packages from remote source code repositories, such as GitHub. `r pkg("remotes")` has no dependencies and will install packages with their dependencies from any git or subversion repository. 
+- There are many packages to facilitate installing packages from remote source code repositories, such as GitHub. `r pkg("remotes")` has no dependencies and will install packages with their dependencies from any git or subversion repository. `r pkg{"ipkg"}` depends on remotes and facilitates using a proxy website if you don't have access to GitHub.
 
 ### Checking a package
 
