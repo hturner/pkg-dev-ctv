@@ -29,7 +29,7 @@ To assist package developers, this task view collates contributed packages with
 reference to relevant sections of WRE, highlighting relevant functionality from 
 base/recommended packages before alternative/supplementary tools.
 
-If you think that some package is missing from the Task View, please file an issue in the GitHub repository or contact the maintainer(s).
+If you think that some package is missing from the task view, please file an issue in the GitHub repository or contact the maintainer(s).
 
 ## First steps
 
@@ -67,20 +67,20 @@ code files provided to appropriate places, and creates skeleton help
 files and a Read-and-delete-me file describing further steps in
 packaging.
 
+When initializing a package, it is worth considering how it should be licensed. The CRAN Repository Policy links to a [database of licenses acceptable for CRAN](https://svn.r-project.org/R/trunk/share/licenses/license.db).
+
 WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-structure).
 
- - `r pkg("usethis", priority = "core")` has many utilities to setup the structure of the package, including a NEWS file and adding dependencies in the README.
+ - `r pkg("available")` checks whether a package name is valid and available, i.e., not already in use on CRAN, Bioconductor or GitHub. Also checks for unintended meanings of the name. `r pkg("collidr")` checks for collisions between a package or function name and existing names of packages and/or functions on CRAN.
+ - `r pkg("usethis", priority = "core")` provides `create_package()` to set up a minimal package structure, along with many utilities to add components, including the `use_*_license()` functions, where `*` is replaced by the license name.
  - `r pkg("pkgKitten")` provides an almost empty package skeleton and some utilities to create help pages.
- - `r bioc("biocthis")` prepares for Bioconductor repository.
-
-Some packages like `r pkg("fusen")` and `r github("jacobbien/litr-project")` prepare a project from an R markdown file. 
-`r pkg("noweb")` allows to use literate programming to create the package.
-There are others that help packaging several R files, `r pkg("rfold")`, or create a package from a dataset `r pkg("DataPackageR")`.
-Others, like `r pkg("cookiecutter")` can create a new package from a template stored elsewhere. 
-
-SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#initializing-an-r-package>,
-<https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#package-templates->, <https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#naming-things->
+ - `Rcpp.package.skeleton()` from `r pkg("Rcpp")` extends `package.skeleton()` to add the components required to use `r pkg("Rcpp")` for interfacing C or C++ code in R packages. `r pkg("usethis")` provide similar functionality with the `use_c()` and `use_rcpp()` functions.
+ - `r bioc("biocthis")` automates setup for Bioconductor packages.
+ - `r github("insightsengineering/r.pkg.template")` initializes a GitHub repository for an R package, with the standard files and directories, along with CI/CD configurations and pre-commit git hooks to identify and resolve common issues.
+ - `r pkg("fusen")` and `r github("jacobbien/litr-project")` create a package from a R markdown file. `r pkg("noweb")` creates a package via literate programming with noweb syntax (as used by Sweave).
+ - `r pkg("DataPackageR")` creates a package from a dataset. `r pkg("rcompendium")` creates the structure for a Research Compendium: an R package structure to support reproducible research including raw data, analysis scripts, outputs and a make script.
+ - `r pkg("leprechaun")` adds templating code to a package skeleton for creating a Shiny app as a package, without adding to the dependencies. `r pkg("golem")` creates a package template for developing and deploying a Shiny app using the `r pkg("golem")` framework.
+ - `r pkg("pkgverse")` creates a meta package that bundles several related packages that can be installed and loaded together.
 
 ## Package development
 
@@ -96,10 +96,13 @@ See the [Links](#links) section for other guides, including those from
 [Bioconductor](https://www.bioconductor.org/) and
 [rOpenSci](https://ropensci.org/).
 
-CONSIDER: gpttools, command line tools like ComputationalProteomicsUnit/maker, rdatsci/rtcl
-
-SEE ALSO:  
-<https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#swiss-army-knives->
+ - `r pkg("devtools", priority = "core")` facilitates interactive development of R and compiled code via the `load_all()` function to simulate installing and reloading the package. Additional functions support generating documentation, testing, checking a package and submitting to CRAN.
+ - `r pkg("usethis", priority = "core")` provides helpers to add new components such as `use_r()`, `use_data()`, `use_vignette()`, or `use_news_md()`, along with functions to support specific packages or workflows, such as `use_testthat()` or `use_git()`.
+ - `r pkg("pkgmaker")` provides utilities for working with package-specific options, registry objects (as defined by `r pkg("registry")`), vignettes, unit tests and BibTeX. Serves as an incubator for tools that may later be packaged separately.
+ - `r pkg("packager")` performs package development tasks (document, build, check, etc) with `r pkg("fakemake")` or GNU make, so that make targets are only regenerated when files in the make chain have been updated. Provides a `create()` function to initialize a package with the required structure and an `infect()` function to work with a package initialized another way. The `r github("ComputationalProteomicsUnit/maker")` repository provides an external Makefile to perform development tasks.
+ - `r github("rdatsci/rtcl")` provides command line utilities for development tasks, which are also provided as regular R functions.
+ - `r github("unDocUMeantIt/roxyPackage")` provides the `roxy.package()` function to generate help files, vignettes and package-level documentation (e.g., NEWS and README) in both PDF and HTML; check and build packages, and manage a local package repository. Tasks can be performed individually or in combination.
+ - `r github("JamesHWade/gpttools")` facilitates using large language models (from an AI service provider or a local model) for package development, e.g. converting code to a function; adding documentation or tests, or identifying improvements.
 
 ### Package documentation
 
@@ -112,31 +115,54 @@ SEE ALSO (map to relevant subsections):
 #### Help pages
 
 Source files for help pages use the "R documentation" (Rd) format. 
-`utils::prompt` and `utils::promptData` may be used to create an Rd template for a function or data set, respectively. `tools::Rdcheck` may be used to validate Rd files, e.g., detecting syntax errors.
+`utils::prompt()` and `utils::promptData()` may be used to create an Rd template for a function or data set, respectively. `tools::checkRd()` may be used to validate Rd files, e.g., detecting syntax errors.
 
 WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-R-documentation-files)
 
+- `r pkg("roxygen2", priority = "core")` provides the `roxygenise()` function to generate Rd files from comments with specific markup in R source files. When used with Markdown, `r pkg("roxygen2")` can greatly reduce the markup required in the documentation source. Several [development workflow](#development-workflow) packages support creating documentation with `r pkg("roxygen2")`. 
+- `r pkg("sinew")` generates roxygen skeletons and updates the NAMESPACE and DESCRIPTION file as required; can be used to update as well as create royxgen documentation.  
+- `r pkg("Rd2roxygen")` provides functions to convert Rd files to `r pkg("roxygen2")` comments.
+- `r pkg("roxygen2md")` replaces Rd syntax in `r pkg("roxygen2")` comments with the Markdown equivalent.
+- `r pkg("roclang")` facilitates extracting components of documentation from an Rd file (in the same or another package) for reuse, by insertion in a roxygen comment.
+- `r pkg("pasteAsComment")` provides an RStudio addin to paste clipboard content as a roxygen block - useful for inserting examples; `r github("csgillespie/roxygen2Comment")` provides an RStudio addin to convert regular code to roxygen commented code and vice versa.
+- `r pkg("roxyglobals")` adds additional roxygen tags to generate R code defining global variables with `utils::globalVariables()`. This can be used to avoid false positives in the package check when functions in the package call functions that use non-standard evaluation.
+- `r github("moodymudskipper/devtag")` provides the `@dev` tag for creating developer documentation for unexported functions; `r github("ropensci-review-tools/srr")` adds tags to document adherence to rOpenSci's standards for software review.
+- `r pkg("Rdpack")` provides functions and Rd macros for developing documentation, e.g. adding template documentation for new arguments; importing references from BibTeX files, and evaluating R code then inserting the resulting output or graphic.
+- `r pkg("Rd2md")` converts Rd files to Markdown and creates a combined Markdown reference manual; `r github("Genentech/rd2markdown")` generates Markdown from a source Rd file or the help page of an installed package.
+- `r github("coolbutuseless/rd2list")` converts Rd files to an R list.
+
 #### Vignettes
 
-The default format for vignettes is Sweave format with special metadata described in WRE. `R CMD build` will run `utils::Sweave` to build the vignettes as part of the package.
+The default format for vignettes is Sweave format with special metadata described in WRE. `R CMD build` will use `utils::Sweave()` as the default *vignette engine* to build a vignette. Alternative vignette engines can be specified in the metadata in the form `<package>::<engine>`.
 
-WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes)
+WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-package-vignettes), especially [Non-Sweave vignettes](https://cran.r-project.org/doc/manuals/R-exts.html#Non_002dSweave-vignettes-1)
 
-CONSIDER: rmarkdown::html_vignette, markdown::html_format as more lightweight alternative c.f. https://github.com/Rdatatable/data.table/pull/5773
+- `r pkg("knitr", priority = "core")` provides vignette engines to compile HTML and PDF vignettes. The `knitr::rmarkdown` engine can be used with the `rmarkdown::html_vignette()` format, which is a lightweight alternative to `knitr::html_document()`. For mathematics to render offline, the `math_method` argument of `rmarkdown::html_vignette()` should be set to `"katex"` or `"r-katex"`.
+- `r pkg("litedown", priority = "core")` provides a vignette engine that can be used with its own output formats for HTML and PDF. It is designed to have minimal dependencies and produce lightweight HTML files. It has sufficient features for most vignettes (e.g., table of contents, cross-references, citations) and is recommended unless richer features are required.
+- `r pkg("quarto")` provides a vignette engine that fixes configurations of the HTML format to produce a lightweight file. This may be preferred for richer features (equivalent to Sweave) or re-using material already using Quarto. Since `r pkg("quarto")` depends on `r pkg("rmarkdown")`, and adds Quarto as a system dependency, this option is dependency-heavy.
+- `r pkg("prettydoc")` provides `html_pretty()` as an alternative to `rmarkdown::html_vignette` that produces lightweight files with fancier themes.
+- `r pkg("R.rsp")` provides facilities to include static PDF or HTML vignettes; compile vignettes from plain LaTeX files, and render PDF or HTML vignettes with the `R.rsp::rsp` engine to use RSP pre-processing directives (e.g., include an external file or use document metadata) and code expressions that allow looping over text with code snippets.
 
 #### Other forms of documentation
 
-CONSIDER: pkgdown, learnr
+- `r pkg("pkgdown", priority = "core")` generates a package website based on standard documentation files with the option to complement this with additional content, such as externally hosted `r pkg("learnr")` tutorials. There are helpers for deploying the site on GitHub Pages. 
+- `r pkg("altdoc")` is designed as a lightweight alternative to `r pkg("pkgdown")` with support for many documentation generators, including Quarto, Docute, Docsify, and MkDocs.
+- `r pkg("ropenscilabs/r2readthedocs")` converts package documentation to a Read the Docs website.
+- `r pkg("rdoxygen")` creates Doxygen documentation for C++ code in packages, optionally made available as a vignette.
 
 ### Package metadata and information files
 
-`tools::CRAN_package_db` returns a data frame with character columns containing most `DESCRIPTION` metadata for the current packages in the CRAN package repository.
+`tools::CRAN_package_db()` returns a data frame with character columns containing most `DESCRIPTION` metadata for the current packages in the CRAN package repository.
 
-`utils::NEWS` can be used to extract the NEWS for a package and display it in a browser.
+`utils::NEWS()` can be used to extract the NEWS for a package and display it in a browser.
 
-CONSIDER: desc, thankr, badger
-
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#package-metadata-
+- `r pkg("desc")` provides tools to read, write, create, and manipulate DESCRIPTION files.
+- `r pkg("semver")` provides tools for operating on [semantic version strings](http://semver.org).
+- `r pkg("newsmd")` provides functions to create or update a `NEWS.md` file. `r pkg("fledge")` and `r pkg("autonewsmd")` generate `NEWS.md` from git commit messages following conventions specific to each package.
+- `r pkg("codemetar")`, or the leaner `r pkg("codemeta")`, convert metadata from packages sources such as DESCRIPTION and CITATION to the CodeMeta `JSON-LD` format. This is a cross-language metadata standard used by search engines, software repositories etc. 
+- `r pkg("cffr")` and `r pkg("citation")` generate a `CITATION.cff` file from package metadata and provide utilities to work with such files, e.g. converting to/from `"bibentry"` objects (see `utils::bibentry()`). `r pkg("cffr")` provides helpers for maintenance via git. `CITATION.cff` is a cross-language citation file format recognized by software repositories and citation managers.
+- `r pkg("badger")` generates URLs for customised badges from providers such as [shields.io](https://shields.io/), commonly added to README files and package websites to display metadata such as current CRAN version.
+- `r pkg("allcontributors")` facilitates acknowledging all contributors to code and repository issues in the README.
 
 ### Package logos
 
@@ -144,7 +170,8 @@ To help promote packages, it has become popular to create hexagon-shaped logos
 that may be used in package documentation or information files and may be 
 used to create promotional material such as stickers.
 
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#badges-and-stickers
+- `r pkg("hexSticker")` creates hex sticker designs based on R plots or image files.
+- `r github("mitchelloharawild/hexwall")` generates an image of tesselated hex sticker designs.
 
 ### Packages tests
 
@@ -158,38 +185,79 @@ reported but not causing an error.
 
 WRE reference: [Package subdirectories](https://cran.r-project.org/doc/manuals/R-exts.html#Package-subdirectories)
 
-CONSIDER: valtools, vdiffr, httptest2, tinytest, vcr, dgkf/testex
+These packages provide some automation and helpers to test code:
+ - `r pkg("tinytest", priority = "core")` allows to add tests to a package with no further dependencies and includes the tests in the installed package, making them available to users.
+ - `r pkg("testthat", priority = "core")` helpers for tests including snapshot tests. `r pkg("patrick")` allows to parameterize testing with testthat. `r pkg("hySpc.testthat")` attaches the tests to functions.
+ - `r pkg("RUnit")` and `r pkg("svUnit")` provides alternative unit testing frameworks, similar to `r pkg("testthat")`
+ - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()` for a simple unit testing interface with minimal dependencies.
+ - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with testthat and tinytest.
+ - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
+ - `r pkg("unitizer")` provides a testing framework for interactive regression testing, making it simpler to review and debug tests.
+ - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
+ - `r pkg("exampletestr")` and `r pkg("doctest")` convert examples into tests to be run by testthat. `r pkg("testex")` converts documentation by roxygen2 into tests to be run by testthat.
+ - `r pkg("cucumber")` integrates with testthat to run tests specified using the 'Gherkin' language to describe high level scenarios, e.g. when <I do this>, then <this should happen>.
+ - `r pkg("quickcheck")` and `r github("ropensci-review-tools/autotest")` check against randomly generated inputs and are compatible with testthat. 
+ - `r pkg("xpectr")` provides tools for generating expectations for testthat tests in a systematic way.
+ 
 
-SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#unit-testing, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#unit-testing-
+Testing internet requests can be difficult to do it reliably. 
+One can use [this book "HTTP testing in R"](https://books.ropensci.org/http-testing/) to take inspiration:
+ - `r pkg("vcr")` records HTTP requests and replays them during future runs. 
+ - `r pkg("webmockr")` stubbing (generating dummy results) and setting expectations on 'HTTP' requests. 
+ - `r pkg("httptest2")` works for recording and saving requests made by the httr2 package without requiring access to the remote service.
+ - `r pkg("webfakes")` allows to create and launch fake apps in test files, for testing complex behaviour.
+
+Other packages focused on specific areas:
+ - `r pkg("gdiff")` and `r pkg("vdiffr")` provide helpers for visual tests on graphical output. vdiffr integrates with testthat and provides a Shiny app to manage test cases.
+ - `r pkg("shinytest2")` provides a testing framework for Shiny applications.
+ - `r pkg("mcunit")` helps with unit testing MCMC methods.
+ - `r pkg("checkmate")` and `r pkg("testdat")` package which extend testthat for data structures unit testing.
 
 #### Code coverage
 
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#code-coverage
+- `r pkg(covr, priority = "core")` track and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
+- `r pkg(covtracer)` links tested code to documentation, to evaluate coverage of documented behaviours.
 
-### Working with package options
+### Package-specific options
 
-CONSIDER: options, withr::with_options
+A simple way to implement package-specific options is to set global options with 
+a package-specific prefix, but there are several packages that provide more 
+refined and robust management of options.
 
-SEE ALSO: <https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#using-options-in-packages>
+- `r pkg("options")` provides helpers to define and document package-specific options, managed via `base::options()`, with corresponding environment variables. The options can be set globally or locally (e.g., within a function).
+- `r pkg("GlobalOption")` provides similar functionality to `r pkg("options")`, with extra features such as option validation, setting options as functions of other options, and secret or read-only options.
+- `r pkg("potions")` provides the `brew()` and `pour()` functions, that can be used to store and retrieve package-specific global options, without over-writing any global options of the same name.
+- `r pkg("settings")` allows to set up a package-specific options manager, for setting global or local options, with optional validation rules.
+- `r pkg("futile.options")` allows to set up a package-specific options manager for global options.
+- `r pkg("pkgconfig")` allows packages to set package-specific values of global options, that can be queried by other packages.
+- `r pkg("withr")` provides the `local_options()` function to temporarily change global options within the scope of a function.
 
-### Creating graphical user interfaces
+### Creating user interfaces
 
-For simple interactive interfaces, `base::readline()` can be used to create a simple prompt. `utils::menu()`, `utils::select.list()` can provide graphical and console-based selection of items from a list, and `utils::txtProgressBar()` provides a simple text progress bar.
+For simple interactive interfaces, `base::readline()` can be used to create a basic prompt, while `utils::askYesNo()` prompts for a set response, by default "Yes" or "No". 
+`utils::menu()` and `utils::select.list()` can provide graphical and console-based selection of items from a list, respectively. `utils::txtProgressBar()` provides a text progress bar.
 
-`tcltk` is a base package that provides a large set of tools for creating interfaces uses Tcl/tk (most functions are thin wrappers around corresponding Tcl and tk functions).
+`tcltk` is a base package (not loaded by default) that provides a large set of tools for creating graphical interfaces using Tcl/Tk. most functions are thin wrappers around the corresponding Tcl and Tk functions.
 
-SEE ALSO:   https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#creating-graphical-interfaces
+  * `r pkg(tcltk2)` provides additional Tcl commands and Tk widgets to supplement tcltk. 
+  * `r pkg(fgui)` facilitates rapid generation of a Tcl/Tk interface to one or multiple functions.
+  * `r pkg(getPass)` provides interfaces for securely requesting a passphrase, masking the characters typed in by the user. A GUI is used where possible, with fallback to a terminal interface.
+  * `r pkg(progress)` provides configurable text progress bars, for R and C++.
+  * `r pkg(shiny)` provides a framework to create browser-based interfaces, from function dialogues to more complex interactive web applications, that can be run locally with `runApp()` or deployed as static web or dynamic websites. See the [Web Technologies and Services](https://cran.r-project.org/web/views/WebTechnologies.html#frameworks) task view for other frameworks for building R-based web applications.
 
-### Localisation
+### Localization
 
 Packages might be addressed to people using a different language and locale. 
-Localization in R uses GNU `gettext` as described in the notes on [Translating R Messages](https://developer.r-project.org/Translations30.html) which uses translations stored in PO files.
+Localization in R uses GNU `gettext` as described in the notes on [Translating R Messages](https://developer.r-project.org/Translations30.html) which uses translations stored in PO files. 
 
-`tools:update_pkg_po` creates or updates the PO template files for a package, 
-and updates corresponding PO files as required. `tools::checkPoFile` can be 
-used to check translation files for inconsistent format strings.
+`tools::update_pkg_po()` creates or updates the PO template (`.pot`) files for a package, 
+and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` can be 
+used to check translation files for inconsistently formatted strings.
 
-CONSIDER: potools, https://github.com/eliocamp/rhelpi18n
+* `r pkg(potools, priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
+* Alternative mechanisms for localization of R messages are provided by `r pkg(stranslate)` 
+and `r pkg(translated)`, using plain text and JSON files respectively. 
+* `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
 
 ### Building and installing a source package
 
