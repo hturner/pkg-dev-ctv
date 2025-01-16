@@ -229,7 +229,7 @@ Localization in R uses GNU `gettext` as described in the notes on [Translating R
 and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` can be 
 used to check translation files for inconsistently formatted strings.
 
-* `r pkg(potools)` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
+* `r pkg(potools, priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
 * Alternative mechanisms for localization of R messages are provided by `r pkg(stranslate)` 
 and `r pkg(translated)`, using plain text and JSON files respectively. 
 * `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
