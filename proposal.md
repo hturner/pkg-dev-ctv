@@ -285,12 +285,16 @@ of the R Internals manual. In the [Suggested packages section](https://cran.r-pr
 
 CRAN provide the [WinBuilder](https://win-builder.r-project.org/) and [macOS builder](https://mac.r-project.org/macbuilder/submit.html) services for checking on Windows and M1 macOS machines, respectively.
 
--   [R-hub](https://builder.r-hub.io/) enables checking on multiple
-    platforms via the web interface or the `r pkg("rhub")` package.
-    `rhub::check_for_cran()` will automatically select the available
-    platforms closest to those used by CRAN. `rhub::platforms` returns
-    the available platforms - it is worth checking how up-to-date these
-    are. Further platforms are available via Docker containers
+- `r pkg("rhub", priority = "core")` (R-hub v2) enables you to run 
+`R CMD check` on multiple platforms, including Linux, macOS and Windows, via 
+GitHub Actions. The rhub package helps you set up the GitHub Actions on your 
+own GitHub repository, or if you don’t have a GitHub account, you can submit 
+your package to the r-hub2 GitHub organization to use their shared pool of 
+runners.
+- `r pkg("rcmdcheck")` runs `R CMD check` from R, returning an `"rcmdcheck"` 
+object, which you can query and manipulate. The package also provides functions 
+to parse check results from a file or from a url, including official CRAN check 
+results.
 - `r bioc("BiocCheck")` guides maintainers through Bioconductor best practices.
     
 See the [Continuous Integration](#Continuous-Integration) section for
@@ -301,28 +305,58 @@ checks of code or text quality, using tools in the following sub-sections.
 
 #### Code quality checks
 
--   The [rchk](https://github.com/kalibera/rchk) GitHub repository
-    provides Docker and Singularity containers that may be used to check
-    for memory protection errors in the C code of a package. The
-    [r-lib/actions](https://github.com/r-lib/actions) GitHub repository
-    provides a GitHub action to run the rchk tests.
-* `codetools::checkUsagePackage` will check all functions in a package for 
-possible problems, e.g., calls not consistent with visible function definitions.
+- The recommended package `r pkg("codetools", priority = "core")` provides 
+`checkUsagePackage()` to check all R code in a package for 
+possible problems, e.g., calls not consistent with visible function definitions. 
+`r pkg("checkglobals")` provides a lightweight alternative to 
+`codetools::findGlobals()` to check for missing function imports and/or variable 
+definitions without the need for package installation or code execution.
+- `r pkg("lintr", priority = "core")` checks code for adherence to a given 
+style, syntax errors and violations of best practices. `lintr::lint_package()` 
+can be used to lint R code in a package, including in supplementary files 
+such as tests and vignettes. lintr is combined with linters 
+for other languages by tools including [MegaLinter](https://megalinter.io), 
+[super-linter](https://github.com/github/super-linter) and 
+[CodeFactor](https://www.codefactor.io/). 
+`r pkg("adaptalint")` infers the coding style from a package, for linting 
+the same package or a different one. 
+`r pkg("styler")` automatically reformats code to adhere to a given style guide, 
+elminating some of the problems `r pkg("lintr")` can detect.
+- `r pkg("goodpractice")` checks a package for good practices, incoporating 
+checks from `R CMD check` and `lintr`, as well as further checks such a using 
+`r pkg("cyclocomp")` to check code complexity. Checks can be run individually, 
+e.g., `goodpractice::gp(pkg_path, checks = "rcmdcheck_portable_file_names")`.
 
-CONSIDER: lintr::lint_package, PaRe, badger::badge_codefactor using codefactor.io
+#### Compiled code checks
 
-SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#code-analysis-and-formatting>, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#codedocument-formatting-, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#code-analysis-  except code coverage
+WRE reference: [Checking memory access](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Checking-memory-access) 
+documents how memory violations and other issues in compiled code such as 
+undefined behaviour can be detected with tools including Valgrind, 
+Address Sanitizer (ASAN) and Undefined Behaviour Sanitizer (UBSAN). 
+These tools required appropriately configured builds of R. 
+
+- [rchk](https://github.com/kalibera/rchk) is a tool for finding 
+memory protection errors in code that uses R's C API and it is run by 
+CRAN as an additional check on R packages using C. The rchk repository provides 
+the tool in a pre-built Docker container. 
+-  [R-hub](https://r-hub.github.io/rhub/) v2 enables you to run 
+`R CMD check` with R-devel built with Valgrind, sanitizers, or rchk, along with 
+many other specific configurations of R. 
+- `r pkg("cppcheckR")` allows to run [Cppcheck](https://cppcheck.sourceforge.io/) 
+on C and C++ files to detect errors and recommend good practices.
 
 #### Text quality checks
 
-`utils` provides multiple functions for spell-checking portions of packages, including .Rd files ( `utils::aspell_package_Rd_files`) and vignettes (`utils::aspell_package_vignettes`) via the general purpose aspell function, which requires a system spell checking library, such as [aspell](http://aspell.net/), [hunspell](http://hunspell.github.io/), or [ispell](https://www.cs.hmc.edu/~geoff/ispell.html).
+`utils` provides multiple functions for spell-checking portions of packages, 
+including .Rd files ( `utils::aspell_package_Rd_files`) and 
+vignettes (`utils::aspell_package_vignettes`) via the general purpose `aspell` 
+function, which requires a system spell checking library, such as 
+[aspell](http://aspell.net/), [hunspell](http://hunspell.github.io/), or 
+[ispell](https://www.cs.hmc.edu/~geoff/ispell.html).
 
-CONSIDER: urlchecker.
-
-SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#spell-checking>,
-https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#documentation-quality-%EF%B8%8F
+- `r pkg("spelling")` spell checks documents in common formats, including 
+LaTeX and Markdown, as well as R documentation and DESCRIPTION files. Packages 
+may define a wordlist to allow custom terminology.
 
 ### Debugging issues found in package checks
 
@@ -331,15 +365,23 @@ your package that is specific to the computational environment, e.g.,
 the version of R, or the compiler used. The following tools support
 debugging in such cases.
 
--   R-Hub provide Docker containers in the
-    [rhub-linux-builders](https://github.com/r-hub/rhub-linux-builders)
-    GitHub repository. The `r pkg("rhub")` package has [helpers to use
-    the images locally from
-    R](https://r-hub.github.io/rhub/articles/local-debugging.html).
--   The [Rocker](https://rocker-project.org/images/) project offers
-    stacks of system images. Probably most helpful for package
-    development is the base stack, where R-devel is installed alongside
-    R-base, with variants using different compilers/compiler settings.
+- The [Rocker](https://rocker-project.org/images/) project provides several 
+Dockers containers with R installed. The 
+[versioned stack](https://rocker-project.org/images/#the-versioned-stack) can 
+be used to work with specific version of R, while the 
+[base stack](https://rocker-project.org/images/#the-base-stack) provides R-devel 
+installed alongside R-release, optionally configured with ASAN and USAN 
+sanitizers.
+- The Docker containers used by [R-hub](https://r-hub.github.io/rhub/) are 
+documented on the [R-hub containers](https://r-hub.github.io/containers/) site, 
+with instructions for how to use them for local debugging.
+Available containers include builds of R-release, R-patched and R-devel, with 
+the latter available in multiple configurations, including several 
+configured for debugging memory issues.
+- [r-debug](https://github.com/wch/r-debug) provides a single Docker image 
+containing various builds of R for debugging memory problems. These include 
+images with the debugging tools Valgrind or gdb, as well as images with R 
+compiled for use with ASAN, UBSAN or [gctorture](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-gctorture-1).
 
 ## Maintenance
 
@@ -402,7 +444,7 @@ based on a package database like that returned by `utils::available.packages`. R
 
 `tools::check_packages_in_dir` can be used to check the reverse dependencies of a package (or set of packages).
 
-CONSIDER: `sessioninfo::session_info`, revdepcheck, prefixer, rcheology, tools like drat and miniCRAN
+CONSIDER: checked, `sessioninfo::session_info`, revdepcheck, prefixer, rcheology, tools like drat and miniCRAN
 
 WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-Dependencies).
 
