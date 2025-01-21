@@ -401,12 +401,11 @@ remains useful and available.
 Continuous Integration (CI) is the practice of automatically running tests as 
 updates are made to the source code in a code respository. It may be paired with 
 Continuous Delivery/deployment (CD) automating release or deployment of 
-software. Some code hosting platforms have their own CI/CD system, e.g. GitHub 
-Actions or GitLab Pipelines; there are also standalone tools such as 
-[CircleCI](https://circleci.com/) and [Woodpecker](https://woodpecker-ci.org). 
+software/software products. Some code hosting platforms have their own CI/CD 
+system, e.g. GitHub Actions or GitLab Pipelines; there are also standalone tools 
+such as [CircleCI](https://circleci.com/) and [Woodpecker](https://woodpecker-ci.org). 
 
-CI/CD is widely used to automate package development tasks.
-CI/CD workflows are usually triggered by committing to the main branch of the
+CI/CD workflows are usually triggered by committing to the main branch of a
 repository, though other events such as a pull request comment can be
 used as a trigger. CI/CD pipelines can also be scheduled, which is useful for 
 running `R CMD check` regularly, to check for issues when a package is not under
