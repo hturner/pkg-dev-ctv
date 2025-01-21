@@ -297,8 +297,8 @@ to parse check results from a file or from a url, including official CRAN check
 results.
 - `r bioc("BiocCheck")` guides maintainers through Bioconductor best practices.
     
-See the [Continuous Integration](#Continuous-Integration) section for
-information on running package checks automatically.
+See the [CI/CD](#ci-cd) section for information on running package checks 
+automatically.
 
 Package authors may supplement the standard package check with additional 
 checks of code or text quality, using tools in the following sub-sections.
@@ -396,28 +396,50 @@ authors will be contacted when action is required. It is best if package
 authors take a proactive approach to maintenance to ensure their package
 remains useful and available.
 
-### Continuous integration {#continuous-integration}
+### CI/CD {#ci-cd}
 
-GitHub actions is widely used to automate package development tasks.
-Typically these are triggered on committing to the main branch of the
-repository, though other triggers such as a pull request comment can be
-used as a trigger. The [chron
-feature](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
-may be used to schedule actions, which can be useful to run
-`R CMD check` regularly, to check for issues when a package is not under
-regular development.
+Continuous Integration (CI) is the practice of automatically running tests as 
+updates are made to the source code in a code respository. It may be paired with 
+Continuous Delivery/deployment (CD) automating release or deployment of 
+software. Some code hosting platforms have their own CI/CD system, e.g. GitHub 
+Actions or GitLab Pipelines; there are also standalone tools such as 
+[CircleCI](https://circleci.com/) and [Woodpecker](https://woodpecker-ci.org). 
 
--   The [r-lib/actions](https://github.com/r-lib/actions) GitHub
-    repository provides a GitHub action to run `R CMD check`.
--   `usethis::use_github_action` facilitates setting up an action to run
-    `R CMD check` with R-release on Linux, Mac, and Windows, as well as
-    R-devel and R-oldrel on Linux. Other supported actions include
-    computing test coverage; building and publishing a
-    `r pkg("pkgdown")` site; creating documentation with
-    `r pkg("roxygen2")` and enforcing style conventions with
-    `styler::style_pkg()`.
-    
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#cicd-
+CI/CD is widely used to automate package development tasks.
+CI/CD workflows are usually triggered by committing to the main branch of the
+repository, though other events such as a pull request comment can be
+used as a trigger. CI/CD pipelines can also be scheduled, which is useful for 
+running `R CMD check` regularly, to check for issues when a package is not under
+active development.
+
+- The [r-lib/actions](https://github.com/r-lib/actions) GitHub repository 
+provides various GitHub Actions for R, including `check-r-package` to run 
+`R CMD check`. The example workflow `check-standard.yaml` uses this action to 
+run `R CMD check` with R-release on Linux, Mac, and Windows, as well as 
+R-devel and R-oldrel on Linux. Other example workflows compute test coverage 
+with `r pkg ("covr")`; build and publish a `r pkg("pkgdown")` site; 
+create documentation with `r pkg("roxygen2")`, lint R code with 
+`r pkg("lintr")`, and enforce style conventions with `r pkg("styler")`.
+- `usethis::use_github_action()` facilitates using the example 
+workflows from [r-lib/actions](https://github.com/r-lib/actions) on the 
+GitHub repository for a package.
+ - `r pkg("gitlabr")` provides `use_gitlab_ci()` to set up GitLab CI/CD 
+ pipelines. There is a template that runs `R CMD check`, computes 
+ test coverage with `r pkg("covr")` and then deploys the `r pkg("pkgdown")` 
+ site for a package.
+ - `r pkg("rworkflows")` provides `use_workflow()` to set up GitHub Actions 
+for an R package; each step in the workflow can be enabled/disabled as required. 
+Steps include checking a package with `Bioc::BiocCheck()`, updating badges on 
+the repository README and pushing a Docker container that has RStudio and the 
+package installed to a container registry such as DockerHub.
+ - `r pkg("tic")` steps through setting up CI workflows on different systems, 
+ with GitHub Actions and CircleCI currently supported. For R packages, the 
+ workflow will run `R CMD check`, and optionally compute test coverage and 
+ build a pkgdown site. `r pkg("tic")` builds on `r pkg("circle")`, which 
+ provides low-level access to the Circle CI API, e.g. to restart builds.
+- [Codeberg CI/examples](https://codeberg.org/Codeberg-CI/examples/src/branch/main/R/.woodpecker.yaml) 
+includes an example workflow for running `R CMD check` on an R package with 
+Woodpecker CI.
 
 ### Dependency management
 
