@@ -396,7 +396,7 @@ authors will be contacted when action is required. It is best if package
 authors take a proactive approach to maintenance to ensure their package
 remains useful and available.
 
-### CI/CD {#ci-cd}
+### Continuous Integration/Continuous Delivery (CI/CD) {#ci-cd}
 
 Continuous Integration (CI) is the practice of automatically running tests as 
 updates are made to the source code in a code respository. It may be paired with 
@@ -419,18 +419,22 @@ R-devel and R-oldrel on Linux. Other example workflows compute test coverage
 with `r pkg ("covr")`; build and publish a `r pkg("pkgdown")` site; 
 create documentation with `r pkg("roxygen2")`, lint R code with 
 `r pkg("lintr")`, and enforce style conventions with `r pkg("styler")`.
-- `usethis::use_github_action()` facilitates using the example 
+- `r pkg("usethis")` provides `use_github_action()` to facilitate using the example 
 workflows from [r-lib/actions](https://github.com/r-lib/actions) on the 
 GitHub repository for a package.
- - `r pkg("gitlabr")` provides `use_gitlab_ci()` to set up GitLab CI/CD 
- pipelines. There is a template that runs `R CMD check`, computes 
- test coverage with `r pkg("covr")` and then deploys the `r pkg("pkgdown")` 
- site for a package.
+- `r pkg("biocthis")` provides `use_bioc_github_action()` to set up 
+Bioconductor-friendly GitHub actions. The default workflow is equivalent to  
+`check-standard.yaml` from r-lib/actions, and this can be extended with optional steps 
+such as running tests and building a `r pkg("pkgdown")` site.
  - `r pkg("rworkflows")` provides `use_workflow()` to set up GitHub Actions 
 for an R package; each step in the workflow can be enabled/disabled as required. 
 Steps include checking a package with `Bioc::BiocCheck()`, updating badges on 
 the repository README and pushing a Docker container that has RStudio and the 
 package installed to a container registry such as DockerHub.
+ - `r pkg("gitlabr")` provides `use_gitlab_ci()` to set up GitLab CI/CD 
+ pipelines. There is a template that runs `R CMD check`, computes 
+ test coverage with `r pkg("covr")` and then deploys the `r pkg("pkgdown")` 
+ site for a package.
  - `r pkg("tic")` steps through setting up CI workflows on different systems, 
  with GitHub Actions and CircleCI currently supported. For R packages, the 
  workflow will run `R CMD check`, and optionally compute test coverage and 
