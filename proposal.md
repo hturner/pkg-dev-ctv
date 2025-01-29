@@ -450,7 +450,7 @@ Most packages have forward dependencies that are declared in the
 `Imports` or `Suggests` fields of the package `DESCRIPTION`. Packages
 also typically depend on a minimum version of R, due to explicit or
 implicit use of base R functions (e.g. for compressing data objects). 
-Package authors must be vigilant to need to changes in the functionality, 
+Package authors must be vigilant to changes in the functionality, 
 behaviour, or API of these forward dependencies.
 
 In time, a package may in turn be imported or suggested by another package, 
@@ -469,14 +469,45 @@ based on a package database like that returned by `utils::available.packages`. R
 
 `tools::check_packages_in_dir` can be used to check the reverse dependencies of a package (or set of packages).
 
-CONSIDER: checked, `sessioninfo::session_info`, revdepcheck, prefixer, rcheology, tools like drat and miniCRAN
-
 WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-Dependencies).
 
-
-
-SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#dependency-management>, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#dependency-management-%EF%B8%8F
+ - `r pkg("attachment")` provides helpers to update dependencies in your 
+ DESCRIPTION as required by changes to `.R` or `.Rmd` files, and to quickly 
+ install missing packages declared in a DESCRIPTION file.
+ - `r pkg("rcheology")` provides a dataset of functions in all base and 
+ recommended packages of R from version 0.50. This, or its companion 
+ [rcheology Shiny app](https://hughjonesd.shinyapps.io/rcheology/) can be 
+ helpful to determine the minimum version of R on which a package depends.
+ - `r pkg("backports")` provides reimplementations of functions introduced or 
+ changed since R v3.0.0. This enables package developers maintain compatability 
+ with older versions of R when using newer functionality.
+ - `r pkg("sessioninfo")` provides `session_info()` as an alternative to 
+ `utils::sessionInfo`, which returns richer information on add-on packages in 
+ use. 
+ - `r pkg("pacs")` provides various utilities for managing packages, including 
+ `pac_timemachine()` to get the package version at a certain date, functions to 
+ compare the DESCRIPTION or NAMESPACE across versions, and `pac_deps_heavy()` 
+ to identify how heavy a packages dependencies are in terms of the number of 
+ dependencies they have. 
+ - `r pkg("remotes")` provides `install_version()` to install a particular 
+ version of a package, while `r pkg("dateback")` can be used to install 
+ packages based on a date.
+ - `r pkg("pkgndep")` provides tools to assess "dependency heaviness" (the 
+ number of additional dependencies added by depending on a new package) and 
+ provides suggestions for optimizing package dependencies.
+ - `r pkg("pkgdepends")` can be used to identify, visualise and install package 
+ dependencies, including those specified via `Remotes` in the DESCRIPTION, 
+ for packages on CRAN, Bioconductor, and git repositories.
+ - `r pkg("pkggraph")`, `r pkg("pkgnet)`, `r pkg("deepdep")`, `r pkg("crandep")` 
+ and `r pkg("cranly")` provide  functionality to visualise package dependencies.
+ - `r pkg("pkgdepR")` can be used to create interactive visualisations of 
+ dependencies between functions across packages.
+ - `r pkg("checked")`, `r pkg("prrd")`, and `r pkg("revdepcheck")` are designed 
+ to run reverse dependency checks in parallel. `usethis::use_revdep()` sets up 
+ a package to use `r pkg("revdepcheck")`.
+ - [r-devel/recheck](https://github.com/r-devel/recheck) provides a GitHub 
+ Action to run reverse dependency checks.
+ - `r pkg("ThankYouStars")` can be used to star your dependencies on GitHub.
 
 ### Managing changes
 
