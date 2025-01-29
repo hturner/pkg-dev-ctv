@@ -471,29 +471,28 @@ based on a package database like that returned by `utils::available.packages`. R
 
 WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-Dependencies).
 
- - `r pkg("attachment")` provides helpers to update dependencies in your 
+ - `r pkg("attachment")` provides helpers to update forward dependencies in your 
  DESCRIPTION as required by changes to `.R` or `.Rmd` files, and to quickly 
  install missing packages declared in a DESCRIPTION file.
  - `r pkg("rcheology")` provides a dataset of functions in all base and 
  recommended packages of R from version 0.50. This, or its companion 
- [rcheology Shiny app](https://hughjonesd.shinyapps.io/rcheology/) can be 
- helpful to determine the minimum version of R on which a package depends.
+ [rcheology Shiny app](https://hughjonesd.shinyapps.io/rcheology/) can help 
+ to determine the minimum version of R on which a package depends.
  - `r pkg("backports")` provides reimplementations of functions introduced or 
- changed since R v3.0.0. This enables package developers maintain compatability 
- with older versions of R when using newer functionality.
+ changed since R v3.0.0. This enables package developers to maintain 
+ compatability with older versions of R when using newer functionality.
  - `r pkg("sessioninfo")` provides `session_info()` as an alternative to 
- `utils::sessionInfo`, which returns richer information on add-on packages in 
- use. 
+ `utils::sessionInfo`, which returns richer information on add-on packages. 
  - `r pkg("pacs")` provides various utilities for managing packages, including 
  `pac_timemachine()` to get the package version at a certain date, functions to 
  compare the DESCRIPTION or NAMESPACE across versions, and `pac_deps_heavy()` 
- to identify how heavy a packages dependencies are in terms of the number of 
- dependencies they have. 
+ to identify how heavy a package's forward dependencies are in terms of the 
+ number of forward dependencies they have. 
  - `r pkg("remotes")` provides `install_version()` to install a particular 
  version of a package, while `r pkg("dateback")` can be used to install 
- packages based on a date.
+ packages based on a date or date range.
  - `r pkg("pkgndep")` provides tools to assess "dependency heaviness" (the 
- number of additional dependencies added by depending on a new package) and 
+ number of forward dependencies added by depending on a new package) and 
  provides suggestions for optimizing package dependencies.
  - `r pkg("pkgdepends")` can be used to identify, visualise and install package 
  dependencies, including those specified via `Remotes` in the DESCRIPTION, 
