@@ -461,9 +461,10 @@ their package evolves. Note that CRAN permits dependencies on Bioconductor
 packages, as well as other repositories specified in the 
 `Additional_repositories` field of the `DESCRIPTION` file.
 
-Reverse dependencies may be identified with `tools::dependsOnPkgs`. Dependency 
-graphs may be created using `tools::package_dependencies`,
-based on a package database like that returned by `utils::available.packages`. Reverse dependencies back to CRAN packages from Bioconductor packages may be found by updating the package database repository list from `utils::available.packages` before running `tools::package_dependencies`.
+Forward or reverse dependencies may be identified with `tools::package_dependencies`,
+based on a package database like that returned by `utils::available.packages`.
+Dependencies from either CRAN or Bioconductor can be found by 
+setting the `repos` argument of `utils::available.packages` to  `BiocManager::repositories()`. 
 
 `utils::update.packages` is useful for updating dependencies when trying out changes to a package. `utils::sessionInfo` is helpful in tracking changes caused by upstream updates.
 
