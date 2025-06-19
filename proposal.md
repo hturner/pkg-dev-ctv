@@ -450,7 +450,7 @@ Most packages have forward dependencies that are declared in the
 `Imports` or `Suggests` fields of the package `DESCRIPTION`. Packages
 also typically depend on a minimum version of R, due to explicit or
 implicit use of base R functions (e.g. for compressing data objects). 
-Package authors must be vigilant to need to changes in the functionality, 
+Package authors must be vigilant to changes in the functionality, 
 behaviour, or API of these forward dependencies.
 
 In time, a package may in turn be imported or suggested by another package, 
@@ -461,22 +461,62 @@ their package evolves. Note that CRAN permits dependencies on Bioconductor
 packages, as well as other repositories specified in the 
 `Additional_repositories` field of the `DESCRIPTION` file.
 
-Reverse dependencies may be identified with `tools::dependsOnPkgs`. Dependency 
-graphs may be created using `tools::package_dependencies`,
-based on a package database like that returned by `utils::available.packages`. Reverse dependencies back to CRAN packages from Bioconductor packages may be found by updating the package database repository list from `utils::available.packages` before running `tools::package_dependencies`.
+Forward or reverse dependencies may be identified with `tools::package_dependencies`,
+based on a package database like that returned by `utils::available.packages`.
+Dependencies from either CRAN or Bioconductor can be found by 
+setting the `repos` argument of `utils::available.packages` to  `BiocManager::repositories()`. 
 
-`utils::update.packages` is useful for updating dependencies when trying out changes to a package. `utils::sessionInfo` is helpful in tracking changes caused by upstream updates.
+`utils::update.packages` is useful for updating dependencies when trying out changes to a package. 
+`utils::sessionInfo` is helpful for tracking changes caused by upstream updates; 
+it records the order in which packages are attached or loaded, which can aid 
+debugging when there are namespaces conflicts.
 
 `tools::check_packages_in_dir` can be used to check the reverse dependencies of a package (or set of packages).
 
-CONSIDER: checked, `sessioninfo::session_info`, revdepcheck, prefixer, rcheology, tools like drat and miniCRAN
-
 WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-Dependencies).
 
-
-
-SEE ALSO:  
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#dependency-management>, https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#dependency-management-%EF%B8%8F
+ - `r pkg("attachment")` provides helpers to update forward dependencies in your 
+ DESCRIPTION as required by changes to `.R` or `.Rmd` files, and to quickly 
+ install missing packages declared in a DESCRIPTION file.
+ - `r pkg("rcheology")` provides a dataset of functions in all base and 
+ recommended packages of R from version 0.50. This, or its companion 
+ [rcheology Shiny app](https://hughjonesd.shinyapps.io/rcheology/) can help 
+ to determine the minimum version of R on which a package depends.
+ - `r pkg("backports")` provides reimplementations of functions introduced or 
+ changed since R v3.0.0. This enables package developers to maintain 
+ compatability with older versions of R when using newer functionality.
+ - `r pkg("sessioninfo")` provides `session_info()` as an alternative to 
+ `utils::sessionInfo`, which highlights different information about the 
+ environment, e.g., user interface and pandoc version, versus BLAS library and 
+ locale. Rather than returning an object with full information on loaded or 
+ attached packages, `session_info()` aims to highlight the key details for 
+ these packages, including where packages were installed from. However, the 
+ order of loading is lost as the packages are recorded alphabetically.
+ - `r pkg("pacs")` provides various utilities for managing packages, including 
+ `pac_timemachine()` to get the package version at a certain date, functions to 
+ compare the DESCRIPTION or NAMESPACE across versions, and `pac_deps_heavy()` 
+ to identify how heavy a package's forward dependencies are in terms of the 
+ number of forward dependencies they have. 
+ - `r pkg("remotes")` provides `install_version()` to install a particular 
+ version of a package, while `r pkg("dateback")` can be used to install 
+ packages based on a date or date range.
+ - `r pkg("pkgndep")` provides tools to assess "dependency heaviness" (the 
+ number of forward dependencies added by depending on a new package) and 
+ provides suggestions for optimizing package dependencies.
+ - `r pkg("pkgdepends")` can be used to identify, visualise and install package 
+ dependencies, including those specified via `Remotes` in the DESCRIPTION, 
+ for packages on CRAN, Bioconductor, and git repositories.
+ - `r pkg("pkggraph")`, `r pkg("pkgnet)`, `r pkg("deepdep")`, `r pkg("crandep")` 
+ and `r pkg("cranly")` provide  functionality to visualise package dependencies.
+ - `r pkg("pkgdepR")` can be used to create interactive visualisations of 
+ dependencies between functions across packages.
+ - `r pkg("checked")` and  `r pkg("prrd")` are designed to run reverse 
+ dependency checks in parallel. `r github("r-lib/revdepcheck")` is an 
+ alternative on GitHub with the same aim; `usethis::use_revdep()` sets up a 
+ package to work with `r github("r-lib/revdepcheck")`.
+ - [r-devel/recheck](https://github.com/r-devel/recheck) provides a GitHub 
+ Action to run reverse dependency checks.
+ - `r pkg("ThankYouStars")` can be used to star your dependencies on GitHub.
 
 ### Managing changes
 
