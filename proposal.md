@@ -466,7 +466,10 @@ based on a package database like that returned by `utils::available.packages`.
 Dependencies from either CRAN or Bioconductor can be found by 
 setting the `repos` argument of `utils::available.packages` to  `BiocManager::repositories()`. 
 
-`utils::update.packages` is useful for updating dependencies when trying out changes to a package. `utils::sessionInfo` is helpful in tracking changes caused by upstream updates.
+`utils::update.packages` is useful for updating dependencies when trying out changes to a package. 
+`utils::sessionInfo` is helpful for tracking changes caused by upstream updates; 
+it records the order in which packages are attached or loaded, which can aid 
+debugging when there are namespaces conflicts.
 
 `tools::check_packages_in_dir` can be used to check the reverse dependencies of a package (or set of packages).
 
@@ -483,7 +486,12 @@ WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-r
  changed since R v3.0.0. This enables package developers to maintain 
  compatability with older versions of R when using newer functionality.
  - `r pkg("sessioninfo")` provides `session_info()` as an alternative to 
- `utils::sessionInfo`, which returns richer information on add-on packages. 
+ `utils::sessionInfo`, which highlights different information about the 
+ environment, e.g., user interface and pandoc version, versus BLAS library and 
+ locale. Rather than returning an object with full information on loaded or 
+ attached packages, `session_info()` aims to highlight the key details for 
+ these packages, including where packages were installed from. However, the 
+ order of loading is lost as the packages are recorded alphabetically.
  - `r pkg("pacs")` provides various utilities for managing packages, including 
  `pac_timemachine()` to get the package version at a certain date, functions to 
  compare the DESCRIPTION or NAMESPACE across versions, and `pac_deps_heavy()` 
@@ -502,9 +510,10 @@ WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-r
  and `r pkg("cranly")` provide  functionality to visualise package dependencies.
  - `r pkg("pkgdepR")` can be used to create interactive visualisations of 
  dependencies between functions across packages.
- - `r pkg("checked")`, `r pkg("prrd")`, and `r pkg("revdepcheck")` are designed 
- to run reverse dependency checks in parallel. `usethis::use_revdep()` sets up 
- a package to use `r pkg("revdepcheck")`.
+ - `r pkg("checked")` and  `r pkg("prrd")` are designed to run reverse 
+ dependency checks in parallel. `r github("r-lib/revdepcheck")` is an 
+ alternative on GitHub with the same aim; `usethis::use_revdep()` sets up a 
+ package to work with `r github("r-lib/revdepcheck")`.
  - [r-devel/recheck](https://github.com/r-devel/recheck) provides a GitHub 
  Action to run reverse dependency checks.
  - `r pkg("ThankYouStars")` can be used to star your dependencies on GitHub.
