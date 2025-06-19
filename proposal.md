@@ -192,6 +192,7 @@ These packages provide some automation and helpers to test code:
  - `r pkg("RUnit")` and `r pkg("svUnit")` provides alternative unit testing frameworks, similar to `r pkg("testthat")`
  - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()` for a simple unit testing interface with minimal dependencies.
  - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with `r pkg("testthat")` and `r pkg("tinytest")`.
+ - `r pkg("testex")` facilitates adding tests to examples, optionally via `r pkg("roxygen2")` roclets, including one for `r pkg("testthat")` style expectations.
  - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
  - `r pkg("unitizer")` provides a testing framework for interactive regression testing, making it simpler to review and debug tests.
  - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
