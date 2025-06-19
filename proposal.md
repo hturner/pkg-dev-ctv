@@ -186,11 +186,12 @@ reported but not causing an error.
 WRE reference: [Package subdirectories](https://cran.r-project.org/doc/manuals/R-exts.html#Package-subdirectories)
 
 These packages provide some automation and helpers to test code:
+
  - `r pkg("tinytest", priority = "core")` allows to add tests to a package with no further dependencies and includes the tests in the installed package, making them available to users.
  - `r pkg("testthat", priority = "core")` helpers for tests including snapshot tests. `r pkg("patrick")` allows to parameterize testing with testthat. `r pkg("hySpc.testthat")` attaches the tests to functions.
  - `r pkg("RUnit")` and `r pkg("svUnit")` provides alternative unit testing frameworks, similar to `r pkg("testthat")`
  - `r pkg("testit")` provides two convenience functions `assert()` and `test_pkg()` for a simple unit testing interface with minimal dependencies.
- - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with testthat and tinytest.
+ - `r pkg("roxytest")` and `r pkg("roxut")` provide `r pkg("roxygen2")` roclets for testing with `r pkg("testthat")` and `r pkg("tinytest")`.
  - `r pkg("realtest")` testing with distinct behaviours: expected, acceptable, current, fallback, ideal, or regressive.
  - `r pkg("unitizer")` provides a testing framework for interactive regression testing, making it simpler to review and debug tests.
  - `r pkg("unittest")` testing using the Test Anything Protocol, producing test output in a standard text format.
@@ -199,15 +200,16 @@ These packages provide some automation and helpers to test code:
  - `r pkg("quickcheck")` and `r github("ropensci-review-tools/autotest")` check against randomly generated inputs and are compatible with testthat. 
  - `r pkg("xpectr")` provides tools for generating expectations for testthat tests in a systematic way.
  
+Testing internet requests can be difficult to do reliably. 
+One can use [this book "HTTP testing in R"](https://books.ropensci.org/http-testing/) to take inspiration.
 
-Testing internet requests can be difficult to do it reliably. 
-One can use [this book "HTTP testing in R"](https://books.ropensci.org/http-testing/) to take inspiration:
  - `r pkg("vcr")` records HTTP requests and replays them during future runs. 
  - `r pkg("webmockr")` stubbing (generating dummy results) and setting expectations on 'HTTP' requests. 
  - `r pkg("httptest2")` works for recording and saving requests made by the httr2 package without requiring access to the remote service.
  - `r pkg("webfakes")` allows to create and launch fake apps in test files, for testing complex behaviour.
 
 Other packages focused on specific areas:
+
  - `r pkg("gdiff")` and `r pkg("vdiffr")` provide helpers for visual tests on graphical output. vdiffr integrates with testthat and provides a Shiny app to manage test cases.
  - `r pkg("shinytest2")` provides a testing framework for Shiny applications.
  - `r pkg("mcunit")` helps with unit testing MCMC methods.
