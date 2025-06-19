@@ -492,19 +492,10 @@ WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-r
  attached packages, `session_info()` aims to highlight the key details for 
  these packages, including where packages were installed from. However, the 
  order of loading is lost as the packages are recorded alphabetically.
- - `r pkg("diffify")` facilitates comparison between different versions of CRAN 
- packages, reporting changes in the NEWS, dependencies, namespace or functions.
- - `r pkg("pacs")` provides various utilities for managing packages, including 
- `pac_timemachine()` to get the package version at a certain date, functions to 
- compare the DESCRIPTION or NAMESPACE across versions, and `pac_deps_heavy()` 
- to identify how heavy a package's forward dependencies are in terms of the 
- number of forward dependencies they have. 
- - `r pkg("remotes")` provides `install_version()` to install a particular 
- version of a package, while `r pkg("dateback")` can be used to install 
- packages based on a date or date range.
- - `r pkg("pkgndep")` provides tools to assess "dependency heaviness" (the 
- number of forward dependencies added by depending on a new package) and 
- provides suggestions for optimizing package dependencies.
+ - `r pkg("pacs")` and `r pkg("pkgndep")` provide tools to assess 
+ "dependency heaviness", i.e., the number of forward dependencies added by 
+ depending on a new package. `r pkg("pkgndep")` provides suggestions for 
+ optimizing package dependencies.
  - `r pkg("pkgdepends")` can be used to identify, visualise and install package 
  dependencies, including those specified via `Remotes` in the DESCRIPTION, 
  for packages on CRAN, Bioconductor, and git repositories.
@@ -527,6 +518,14 @@ functions, e.g., experimental to stable, or stable to deprecated.
 - `r pkg("news")`, `rpkg("autonewsmd")` and `r pkg("fledge")` are designed to 
 streamline the process of updating NEWS. `r pkg("fledge")` additionally 
 supports versioning R packages developed in git repositories.
+ - `r pkg("diffify")` facilitates comparison between different versions of CRAN 
+ packages, reporting changes in the NEWS, dependencies, namespace or functions.
+  - `r pkg("pacs")` provides various utilities for managing packages, including 
+ `pac_timemachine()` to get the package version at a certain date and functions 
+ to compare the DESCRIPTION or NAMESPACE across versions.
+ - `r pkg("remotes")` provides `install_version()` to install a particular 
+ version of a package, while `r pkg("dateback")` can be used to install 
+ packages based on a date or date range.
 
 ### Tracking usage
 
