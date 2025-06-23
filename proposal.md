@@ -456,8 +456,6 @@ Most packages have forward dependencies that are declared in the
 `Imports` or `Suggests` fields of the package `DESCRIPTION`. Packages
 also typically depend on a minimum version of R, due to explicit or
 implicit use of base R functions (e.g. for compressing data objects). 
-Package authors must be vigilant to changes in the functionality, 
-behaviour, or API of these forward dependencies.
 
 In time, a package may in turn be imported or suggested by another package, 
 creating a reverse dependency. For CRAN packages, reverse dependencies are 
@@ -473,9 +471,6 @@ Dependencies from either CRAN or Bioconductor can be found by
 setting the `repos` argument of `utils::available.packages` to  `BiocManager::repositories()`. 
 
 `utils::update.packages` is useful for updating dependencies when trying out changes to a package. 
-`utils::sessionInfo` is helpful for tracking changes caused by upstream updates; 
-it records the order in which packages are attached or loaded, which can aid 
-debugging when there are namespaces conflicts.
 
 `tools::check_packages_in_dir` can be used to check the reverse dependencies of a package (or set of packages).
 
@@ -491,24 +486,10 @@ WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-r
  - `r pkg("backports")` provides reimplementations of functions introduced or 
  changed since R v3.0.0. This enables package developers to maintain 
  compatability with older versions of R when using newer functionality.
- - `r pkg("sessioninfo")` provides `session_info()` as an alternative to 
- `utils::sessionInfo`, which highlights different information about the 
- environment, e.g., user interface and pandoc version, versus BLAS library and 
- locale. Rather than returning an object with full information on loaded or 
- attached packages, `session_info()` aims to highlight the key details for 
- these packages, including where packages were installed from. However, the 
- order of loading is lost as the packages are recorded alphabetically.
- - `r pkg("pacs")` provides various utilities for managing packages, including 
- `pac_timemachine()` to get the package version at a certain date, functions to 
- compare the DESCRIPTION or NAMESPACE across versions, and `pac_deps_heavy()` 
- to identify how heavy a package's forward dependencies are in terms of the 
- number of forward dependencies they have. 
- - `r pkg("remotes")` provides `install_version()` to install a particular 
- version of a package, while `r pkg("dateback")` can be used to install 
- packages based on a date or date range.
- - `r pkg("pkgndep")` provides tools to assess "dependency heaviness" (the 
- number of forward dependencies added by depending on a new package) and 
- provides suggestions for optimizing package dependencies.
+ - `r pkg("pacs")` and `r pkg("pkgndep")` provide tools to assess 
+ "dependency heaviness", i.e., the number of forward dependencies added by 
+ depending on a new package. `r pkg("pkgndep")` provides suggestions for 
+ optimizing package dependencies.
  - `r pkg("pkgdepends")` can be used to identify, visualise and install package 
  dependencies, including those specified via `Remotes` in the DESCRIPTION, 
  for packages on CRAN, Bioconductor, and git repositories.
@@ -526,15 +507,41 @@ WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-r
 
 ### Managing changes
 
-CONSIDER: lifecycle, TODOr, maybe diffify
+Package authors should communicate changes in their package for the benefit of 
+users and maintainers of reverse dependencies. They should also be vigilant to 
+changes in the functionality, behaviour, or API of any forward dependencies.
 
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#change-log-and-versioning
+`utils::sessionInfo` is helpful for tracking changes caused by upstream updates; 
+it records the order in which packages are attached or loaded, which can aid 
+debugging when there are namespace conflicts.
+
+- `r pkg("lifecycle")` helps to communicate changes in the lifecycle of 
+functions, e.g., experimental to stable, or stable to deprecated.
+- `r pkg("news")`, `rpkg("autonewsmd")` and `r pkg("fledge")` are designed to 
+streamline the process of updating NEWS. `r pkg("fledge")` additionally 
+supports versioning R packages developed in git repositories.
+ - `r pkg("diffify")` facilitates comparison between different versions of CRAN 
+ packages, reporting changes in the NEWS, dependencies, namespace or functions.
+ - `r pkg("remotes")` provides `install_version()` to install a particular 
+ version of a package, while `r pkg("dateback")` can be used to install 
+ packages based on a date or date range.
+ - `r pkg("pacs")` provides various utilities for managing packages, including 
+ `pac_timemachine()` to get the package version at a certain date and functions 
+ to compare the DESCRIPTION or NAMESPACE across versions.
+ - `r pkg("sessioninfo")` provides `session_info()` as an alternative to 
+ `utils::sessionInfo()`. Rather than returning an object with full information on 
+ loaded or attached packages, `session_info()` aims to highlight the key details 
+ for these packages, including where packages were installed from. However, the 
+ order of loading is lost as the packages are recorded alphabetically.
 
 ### Tracking usage
 
-CONSIDER: dlstats
-
-SEE ALSO:   https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#usage-
+- `rpkg("cranlogs")` and `r pkg("dlstats")` provide functions to query 
+download statistics from the RStudio CRAN mirror. `r pkg("dlstats")` also 
+supports querying Bioconductor download statistics.
+- `rpkg("packageRank")` and `r pkg("Visualize.CRAN.Downloads")` provide 
+functions to visualise CRAN download statistics, to explore trends and compare 
+different packages.
 
 ### Keeping up to date
 
@@ -546,30 +553,43 @@ and
 Changes do occur as R develops and as the software components on which R
 is built evolve.
 
+The [R Blog](https://blog.r-project.org/) and the [R-devel mailing list](https://stat.ethz.ch/mailman/listinfo/r-devel) 
+can help keep track of developments in R that may affect your package. 
+
+The [R-announce mailing list](https://stat.ethz.ch/pipermail/r-announce/) 
+announces planned R releases, indicating when it is a good time to [test release candidates](https://blog.r-project.org/2021/04/28/r-can-use-your-help-testing-r-before-release/) on critical workflows.
+
 `tools::testInstalledPackage` can be used to check if an installed 
 package still passes check, while `tools::summarize_CRAN_check_status` will 
 summarize the CRAN check status for one or more packages. 
 
 The [R-package-devel mailing list](https://stat.ethz.ch/mailman/listinfo/r-package-devel) 
 provides help on package development and can help keep up-to-date with best practices.
-    
-The [R Blog](https://blog.r-project.org/) and the [R-devel mailing list](https://stat.ethz.ch/mailman/listinfo/r-devel) can help keep track of 
-developments in R that may affect your package. 
 
-The [R-announce mailing list](https://stat.ethz.ch/pipermail/r-announce/) 
-announces planned R releases, indicating when it is a good time to [test release candidates](https://blog.r-project.org/2021/04/28/r-can-use-your-help-testing-r-before-release/) on critical workflows.
-
--   Changes in the CRAN Repository Policy are tracked in the [crp GitHub
-    repository](https://github.com/eddelbuettel/crp).
 -  The [r-mailing-list-archive GitHub repository](https://github.com/MichaelChirico/r-mailing-list-archive)
-    can be used to search past discussions on the R-devel and R-package-devel 
-    mailing lists.
--   `usethis::browse_package` lets you select from URLs in the package
-    `DESCRIPTION`, which can be a convenient way to find source code
-    repositories of crucial upstream dependencies, to track their
-    development.
-    
-CONSIDER: foghorn, badger::badge_cran_checks(), wurli/updateme
+can be used to search past discussions on the R-devel and R-package-devel 
+mailing lists.
+- Changes in the CRAN Repository Policy are tracked in the [crp GitHub
+repository](https://github.com/eddelbuettel/crp).  
+- `r pkg("badger")` provides `badge_cran_checks()` for adding a badge to your 
+package `README.md` that either shows a summary or the worst results from 
+the latest CRAN checks.
+- `rpkg("foghorn")` provide functions to query the CRAN checks based on 
+maintainer email or package name, as well as checking where a package is in the 
+CRAN incoming or Winbuilder queues.
+- [cransays](https://r-hub.github.io/cransays/articles/dashboard.html) and 
+[cransubs](https://nx10.github.io/cransubs/) provide dashboards of CRAN 
+submissions, helping to track progress of your own packages or its dependencies.
+- [cranhaven](https://www.cranhaven.org) provides dashboards of CRAN packages 
+at risk of being archived or recently archived, helping to track issues with 
+forward dependencies.
+- `usethis::browse_package()` lets you select from URLs in the package
+`DESCRIPTION`, which can be a convenient way to find source code
+repositories of crucial forward dependencies, to track their
+development.
+- `r pkg("updateme")` modifies `library()` to tell you if installed packages are 
+up-to-date when you load them, helping to keep up with changes in forward 
+dependencies.
 
 ## Links {#links}
 
