@@ -574,6 +574,9 @@ CRAN incoming or Winbuilder queues.
 - [cransays](https://r-hub.github.io/cransays/articles/dashboard.html) and 
 [cransubs](https://nx10.github.io/cransubs/) provide dashboards of CRAN 
 submissions, helping to track progress of your own packages or its dependencies.
+- [cranhaven](https://www.cranhaven.org) provides dashboards of CRAN packages 
+at risk of being archived or recently archived, helping to track issues with 
+forward dependencies.
 - `usethis::browse_package()` lets you select from URLs in the package
 `DESCRIPTION`, which can be a convenient way to find source code
 repositories of crucial forward dependencies, to track their
