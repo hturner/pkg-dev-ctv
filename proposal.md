@@ -357,6 +357,9 @@ function, which requires a system spell checking library, such as
 [aspell](http://aspell.net/), [hunspell](http://hunspell.github.io/), or 
 [ispell](https://www.cs.hmc.edu/~geoff/ispell.html).
 
+`tools` provides `check_package_urls()` and `check_package_dois()` for checking 
+URLs and DOIs in package metadata and information files.
+
 - `r pkg("spelling")` spell checks documents in common formats, including 
 LaTeX and Markdown, as well as R documentation and DESCRIPTION files. Packages 
 may define a wordlist to allow custom terminology.
