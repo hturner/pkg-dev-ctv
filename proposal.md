@@ -109,9 +109,6 @@ See the [Links](#links) section for other guides, including those from
 Help pages must be written for exported R objects and a help page may also be written for the package as a whole. Packages may also include vignettes to give an overview of package functionality or discuss more complex uses. Some contributed packages provide tools to create other types of documentation such 
 as package websites or tutorials.
 
-SEE ALSO (map to relevant subsections): 
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#documentation>, <https://github.com/IndrajeetPatil/awesome-r-pkgtools?tab=readme-ov-file#documentation->
-
 #### Help pages
 
 Source files for help pages use the "R documentation" (Rd) format. 
@@ -389,6 +386,11 @@ containing various builds of R for debugging memory problems. These include
 images with the debugging tools Valgrind or gdb, as well as images with R 
 compiled for use with ASAN, UBSAN or [gctorture](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-gctorture-1).
 
+The [CRAN Cookbook](https://contributor.r-project.org/cran-cookbook/) is a 
+guide written in collaboration with the CRAN Team that provides "recipes" for 
+solving common issues in package code or documentation found during CRAN 
+(re)-submission checks. 
+
 ## Maintenance
 
 Most packages are developed with long-term use in mind. This requires
@@ -593,12 +595,12 @@ dependencies.
 
 ## Links {#links}
 
+Documentation and guides from other R repositories:
+
+-   [R-universe Documentation](https://docs.r-universe.dev) - R-universe is 
+useful for sharing development versions of CRAN packages and as a CI/CD 
+platform.
 -   [Bioconductor Packages: Development, Maintenance, and Peer
     Review](https://contributions.bioconductor.org/)
 -   [rOpenSci Packages: Development, Maintenance, and Peer
     Review](https://devguide.ropensci.org/)
-    
-CONSIDER: other repositories
-
-SEE ALSO: 
-<https://github.com/ropensci-archive/PackageDevelopment/blob/master/README-NOT.md#related-links>
