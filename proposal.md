@@ -59,7 +59,7 @@ Bioconductor), package metadata, vignettes or task views, using the search engin
 - [Bioconductor Code Search](https://code.bioconductor.org/search/) is an official tool to search the source files of Bioconductor packages.
 - [cran GitHub mirror](https://github.com/cran), an unofficial read-only mirror of all CRAN packages (including archived packages), enables search across the full package source files using [GitHub Code Search syntax](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax).
 
-### Intializing a package
+### Initializing a package
 
 `utils::package.skeleton()` automates some of the set-up for a new
 source package. It creates directories, saves functions, data, and R
