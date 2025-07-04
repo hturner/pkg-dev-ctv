@@ -434,20 +434,20 @@ GitHub repository for a package.
 Bioconductor-friendly GitHub actions. The default workflow is equivalent to
 `check-standard.yaml` from r-lib/actions, and this can be extended with optional steps
 such as running tests and building a `r pkg("pkgdown")` site.
- - `r pkg("rworkflows")` provides `use_workflow()` to set up GitHub Actions
+- `r pkg("rworkflows")` provides `use_workflow()` to set up GitHub Actions
 for an R package; each step in the workflow can be enabled/disabled as required.
 Steps include checking a package with `Bioc::BiocCheck()`, updating badges on
 the repository README and pushing a Docker container that has RStudio and the
 package installed to a container registry such as DockerHub.
- - `r pkg("gitlabr")` provides `use_gitlab_ci()` to set up GitLab CI/CD
- pipelines. There is a template that runs `R CMD check`, computes
- test coverage with `r pkg("covr")` and then deploys the `r pkg("pkgdown")`
- site for a package.
- - `r pkg("tic")` steps through setting up CI workflows on different systems,
- with GitHub Actions and CircleCI currently supported. For R packages, the
- workflow will run `R CMD check`, and optionally compute test coverage and
- build a pkgdown site. `r pkg("tic")` builds on `r pkg("circle")`, which
- provides low-level access to the Circle CI API, e.g. to restart builds.
+- `r pkg("gitlabr")` provides `use_gitlab_ci()` to set up GitLab CI/CD
+pipelines. There is a template that runs `R CMD check`, computes
+test coverage with `r pkg("covr")` and then deploys the `r pkg("pkgdown")`
+site for a package.
+- `r pkg("tic")` steps through setting up CI workflows on different systems,
+with GitHub Actions and CircleCI currently supported. For R packages, the
+workflow will run `R CMD check`, and optionally compute test coverage and
+build a pkgdown site. `r pkg("tic")` builds on `r pkg("circle")`, which
+provides low-level access to the Circle CI API, e.g. to restart builds.
 - [Codeberg CI/examples](https://codeberg.org/Codeberg-CI/examples/src/branch/main/R/.woodpecker.yaml)
 includes an example workflow for running `R CMD check` on an R package with
 Woodpecker CI.
