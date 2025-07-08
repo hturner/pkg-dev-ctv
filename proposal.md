@@ -322,10 +322,15 @@ for other languages by tools including [MegaLinter](https://megalinter.io),
 the same package or a different one.
 `r pkg("styler")` automatically reformats code to adhere to a given style guide,
 elminating some of the problems `r pkg("lintr")` can detect.
-- `r pkg("goodpractice")` checks a package for good practices, incoporating
+- `r pkg("goodpractice")` checks a package for good practices, incorporating
 checks from `R CMD check` and `lintr`, as well as further checks such a using
 `r pkg("cyclocomp")` to check code complexity. Checks can be run individually,
 e.g., `goodpractice::gp(pkg_path, checks = "rcmdcheck_portable_file_names")`.
+- `r github("ropensci-review-tools/pkgcheck")` extends `r pkg("goodpractice")`
+to include additional checks for rOpenSci packages, including static code
+analysis and comparison with all current CRAN packages, and an accompanying
+GitHub action `r github("ropensci-review-tools/pkgcheck-action")`.
+
 
 #### Compiled code checks
 
