@@ -283,7 +283,7 @@ the [Tools
 chapter](https://cran.r-project.org/doc/manuals/r-devel/R-ints.html#Tools)
 of the R Internals manual. In the [Suggested packages section](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Suggested-packages) WRE recommends to run `R CMD check` both with `_R_CHECK_DEPENDS_ONLY_=true` and `_R_CHECK_SUGGESTS_ONLY_=true`, as well as with both of these set to `false`.
 
-CRAN provide the [WinBuilder](https://win-builder.r-project.org/) and [macOS builder](https://mac.r-project.org/macbuilder/submit.html) services for checking on Windows and M1 macOS machines, respectively.
+CRAN provide the [Winbuilder](https://win-builder.r-project.org/) and [macOS builder](https://mac.r-project.org/macbuilder/submit.html) services for checking on Windows and M1 macOS machines, respectively.
 
 - `r pkg("rhub", priority = "core")` (R-hub v2) enables you to run
 `R CMD check` on multiple platforms, including Linux, macOS and Windows, via
@@ -363,7 +363,7 @@ may define a wordlist to allow custom terminology.
 
 ### Debugging issues found in package checks
 
-Using a check service such as WinBuilder or R-hub may reveal a bug in
+Using a check service such as Winbuilder or [R-hub](https://r-hub.github.io/rhub/) may reveal a bug in
 your package that is specific to the computational environment, e.g.,
 the version of R, or the compiler used. The following tools support
 debugging in such cases.
@@ -407,7 +407,7 @@ remains useful and available.
 ### Continuous Integration/Continuous Delivery (CI/CD) {#ci-cd}
 
 Continuous Integration (CI) is the practice of automatically running tests as
-updates are made to the source code in a code respository. It may be paired with
+updates are made to the source code in a code repository. It may be paired with
 Continuous Delivery/deployment (CD) automating release or deployment of
 software/software products. Some code hosting platforms have their own CI/CD
 system, e.g. GitHub Actions or GitLab Pipelines; there are also standalone tools
