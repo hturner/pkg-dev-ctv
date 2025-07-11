@@ -327,10 +327,8 @@ checks from `R CMD check` and `lintr`, as well as further checks such a using
 `r pkg("cyclocomp")` to check code complexity. Checks can be run individually,
 e.g., `goodpractice::gp(pkg_path, checks = "rcmdcheck_portable_file_names")`.
 - `r github("ropensci-review-tools/pkgcheck")` extends `r pkg("goodpractice")`
-to include additional checks for rOpenSci packages, including static code
-analysis and comparison with all current CRAN packages, and an accompanying
-GitHub action `r github("ropensci-review-tools/pkgcheck-action")`.
-
+with additional checks for rOpenSci packages, including static code
+analysis and checks of package and function name availability on CRAN.
 
 #### Compiled code checks
 
@@ -439,6 +437,10 @@ GitHub repository for a package.
 Bioconductor-friendly GitHub actions. The default workflow is equivalent to
 `check-standard.yaml` from r-lib/actions, and this can be extended with optional steps
 such as running tests and building a `r pkg("pkgdown")` site.
+- `r github("ropensci-review-tools/pkgcheck")` provides 
+`use_github_action_pkgcheck()` to set up the 
+[ropensci-review-tools/pkgcheck-action](https://github.com/ropensci-review-tools/pkgcheck-action)
+which will run `pkgcheck::pkgcheck()` on a package.
 - `r pkg("rworkflows")` provides `use_workflow()` to set up GitHub Actions
 for an R package; each step in the workflow can be enabled/disabled as required.
 Steps include checking a package with `Bioc::BiocCheck()`, updating badges on
