@@ -117,7 +117,7 @@ Source files for help pages use the "R documentation" (Rd) format.
 WRE reference: [Writing R documentation files](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Writing-R-documentation-files)
 
 - `r pkg("roxygen2", priority = "core")` provides the `roxygenise()` function to generate Rd files from comments with specific markup in R source files. When used with Markdown, `r pkg("roxygen2")` can greatly reduce the markup required in the documentation source. Several [development workflow](#development-workflow) packages support creating documentation with `r pkg("roxygen2")`.
-- `r pkg("sinew")` generates roxygen skeletons and updates the NAMESPACE and DESCRIPTION file as required; can be used to update as well as create royxgen documentation.
+- `r pkg("sinew")` generates roxygen skeletons and updates the NAMESPACE and DESCRIPTION file as required; can be used to update as well as create roxygen documentation.
 - `r pkg("Rd2roxygen")` provides functions to convert Rd files to `r pkg("roxygen2")` comments.
 - `r pkg("roxygen2md")` replaces Rd syntax in `r pkg("roxygen2")` comments with the Markdown equivalent.
 - `r pkg("roclang")` facilitates extracting components of documentation from an Rd file (in the same or another package) for reuse, by insertion in a roxygen comment.
@@ -158,7 +158,7 @@ WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manual
 - `r pkg("newsmd")` provides functions to create or update a `NEWS.md` file. `r pkg("fledge")` and `r pkg("autonewsmd")` generate `NEWS.md` from git commit messages following conventions specific to each package.
 - `r pkg("codemetar")`, or the leaner `r pkg("codemeta")`, convert metadata from packages sources such as DESCRIPTION and CITATION to the CodeMeta `JSON-LD` format. This is a cross-language metadata standard used by search engines, software repositories etc.
 - `r pkg("cffr")` and `r pkg("citation")` generate a `CITATION.cff` file from package metadata and provide utilities to work with such files, e.g. converting to/from `"bibentry"` objects (see `utils::bibentry()`). `r pkg("cffr")` provides helpers for maintenance via git. `CITATION.cff` is a cross-language citation file format recognized by software repositories and citation managers.
-- `r pkg("badger")` generates URLs for customised badges from providers such as [shields.io](https://shields.io/), commonly added to README files and package websites to display metadata such as current CRAN version.
+- `r pkg("badger")` generates URLs for customized badges from providers such as [shields.io](https://shields.io/), commonly added to README files and package websites to display metadata such as current CRAN version.
 - `r pkg("allcontributors")` facilitates acknowledging all contributors to code and repository issues in the README.
 
 ### Package logos
@@ -168,7 +168,7 @@ that may be used in package documentation or information files and may be
 used to create promotional material such as stickers.
 
 - `r pkg("hexSticker")` creates hex sticker designs based on R plots or image files.
-- `r github("mitchelloharawild/hexwall")` generates an image of tesselated hex sticker designs.
+- `r github("mitchelloharawild/hexwall")` generates an image of tessellated hex sticker designs.
 
 ### Packages tests
 
@@ -239,11 +239,11 @@ For simple interactive interfaces, `base::readline()` can be used to create a ba
 
 `tcltk` is a base package (not loaded by default) that provides a large set of tools for creating graphical interfaces using Tcl/Tk. most functions are thin wrappers around the corresponding Tcl and Tk functions.
 
-- `r pkg(tcltk2)` provides additional Tcl commands and Tk widgets to supplement tcltk.
-- `r pkg(fgui)` facilitates rapid generation of a Tcl/Tk interface to one or multiple functions.
-- `r pkg(getPass)` provides interfaces for securely requesting a passphrase, masking the characters typed in by the user. A GUI is used where possible, with fallback to a terminal interface.
-- `r pkg(progress)` provides configurable text progress bars, for R and C++.
-- `r pkg(shiny)` provides a framework to create browser-based interfaces, from function dialogues to more complex interactive web applications, that can be run locally with `runApp()` or deployed as static web or dynamic websites. See the [Web Technologies and Services](https://cran.r-project.org/web/views/WebTechnologies.html#frameworks) task view for other frameworks for building R-based web applications.
+- `r pkg("tcltk2")` provides additional Tcl commands and Tk widgets to supplement tcltk.
+- `r pkg("fgui")` facilitates rapid generation of a Tcl/Tk interface to one or multiple functions.
+- `r pkg("getPass")` provides interfaces for securely requesting a passphrase, masking the characters typed in by the user. A GUI is used where possible, with fallback to a terminal interface.
+- `r pkg("progress")` provides configurable text progress bars, for R and C++.
+- `r pkg("shiny")` provides a framework to create browser-based interfaces, from function dialogues to more complex interactive web applications, that can be run locally with `runApp()` or deployed as static web or dynamic websites. See the [Web Technologies and Services](https://cran.r-project.org/web/views/WebTechnologies.html#frameworks) task view for other frameworks for building R-based web applications.
 
 ### Localization
 
@@ -254,9 +254,9 @@ Localization in R uses GNU `gettext` as described in the notes on [Translating R
 and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` can be
 used to check translation files for inconsistently formatted strings.
 
-- `r pkg(potools, priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
-- Alternative mechanisms for localization of R messages are provided by `r pkg(stranslate)`
-and `r pkg(translated)`, using plain text and JSON files respectively.
+- `r pkg("potools", priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
+- Alternative mechanisms for localization of R messages are provided by `r pkg("stranslate")`
+and `r pkg("translated")`, using plain text and JSON files respectively.
 - `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
 
 ### Building and installing a source package
@@ -283,7 +283,7 @@ the [Tools
 chapter](https://cran.r-project.org/doc/manuals/r-devel/R-ints.html#Tools)
 of the R Internals manual. In the [Suggested packages section](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Suggested-packages) WRE recommends to run `R CMD check` both with `_R_CHECK_DEPENDS_ONLY_=true` and `_R_CHECK_SUGGESTS_ONLY_=true`, as well as with both of these set to `false`.
 
-CRAN provide the [WinBuilder](https://win-builder.r-project.org/) and [macOS builder](https://mac.r-project.org/macbuilder/submit.html) services for checking on Windows and M1 macOS machines, respectively.
+CRAN provide the [Winbuilder](https://win-builder.r-project.org/) and [macOS builder](https://mac.r-project.org/macbuilder/submit.html) services for checking on Windows and M1 macOS machines, respectively.
 
 - `r pkg("rhub", priority = "core")` (R-hub v2) enables you to run
 `R CMD check` on multiple platforms, including Linux, macOS and Windows, via
@@ -321,7 +321,7 @@ for other languages by tools including [MegaLinter](https://megalinter.io),
 `r pkg("adaptalint")` infers the coding style from a package, for linting
 the same package or a different one.
 `r pkg("styler")` automatically reformats code to adhere to a given style guide,
-elminating some of the problems `r pkg("lintr")` can detect.
+eliminating some of the problems `r pkg("lintr")` can detect.
 - `r pkg("goodpractice")` checks a package for good practices, incorporating
 checks from `R CMD check` and `lintr`, as well as further checks such a using
 `r pkg("cyclocomp")` to check code complexity. Checks can be run individually,
@@ -366,7 +366,7 @@ may define a wordlist to allow custom terminology.
 
 ### Debugging issues found in package checks
 
-Using a check service such as WinBuilder or R-hub may reveal a bug in
+Using a check service such as Winbuilder or [R-hub](https://r-hub.github.io/rhub/) may reveal a bug in
 your package that is specific to the computational environment, e.g.,
 the version of R, or the compiler used. The following tools support
 debugging in such cases.
@@ -410,7 +410,7 @@ remains useful and available.
 ### Continuous Integration/Continuous Delivery (CI/CD) {#ci-cd}
 
 Continuous Integration (CI) is the practice of automatically running tests as
-updates are made to the source code in a code respository. It may be paired with
+updates are made to the source code in a code repository. It may be paired with
 Continuous Delivery/deployment (CD) automating release or deployment of
 software/software products. Some code hosting platforms have their own CI/CD
 system, e.g. GitHub Actions or GitLab Pipelines; there are also standalone tools
@@ -494,12 +494,12 @@ recommended packages of R from version 0.50. This, or its companion
 to determine the minimum version of R on which a package depends.
 - `r pkg("backports")` provides reimplementations of functions introduced or
 changed since R v3.0.0. This enables package developers to maintain
-compatability with older versions of R when using newer functionality.
+compatibility with older versions of R when using newer functionality.
 - `r pkg("pacs")` and `r pkg("pkgndep")` provide tools to assess
 "dependency heaviness", i.e., the number of forward dependencies added by
 depending on a new package. `r pkg("pkgndep")` provides suggestions for
 optimizing package dependencies.
-- `r pkg("pkgdepends")` can be used to identify, visualise and install package
+- `r pkg("pkgdepends")` can be used to identify, visualize and install package
 dependencies, including those specified via `Remotes` in the DESCRIPTION,
 for packages on CRAN, Bioconductor, and git repositories.
 - `r pkg("pkggraph")`, `r pkg("pkgnet)`, `r pkg("deepdep")`, `r pkg("crandep")`
@@ -526,7 +526,7 @@ debugging when there are namespace conflicts.
 
 - `r pkg("lifecycle")` helps to communicate changes in the lifecycle of
 functions, e.g., experimental to stable, or stable to deprecated.
-- `r pkg("news")`, `rpkg("autonewsmd")` and `r pkg("fledge")` are designed to
+- `r pkg("news")`, `r pkg("autonewsmd")` and `r pkg("fledge")` are designed to
 streamline the process of updating NEWS. `r pkg("fledge")` additionally
 supports versioning R packages developed in git repositories.
 - `r pkg("diffify")` facilitates comparison between different versions of CRAN
@@ -545,10 +545,10 @@ order of loading is lost as the packages are recorded alphabetically.
 
 ### Tracking usage
 
-- `rpkg("cranlogs")` and `r pkg("dlstats")` provide functions to query
+- `r pkg("cranlogs")` and `r pkg("dlstats")` provide functions to query
 download statistics from the RStudio CRAN mirror. `r pkg("dlstats")` also
 supports querying Bioconductor download statistics.
-- `rpkg("packageRank")` and `r pkg("Visualize.CRAN.Downloads")` provide
+- `r pkg("packageRank")` and `r pkg("Visualize.CRAN.Downloads")` provide
 functions to visualise CRAN download statistics, to explore trends and compare
 different packages.
 
@@ -583,7 +583,7 @@ repository](https://github.com/eddelbuettel/crp).
 - `r pkg("badger")` provides `badge_cran_checks()` for adding a badge to your
 package `README.md` that either shows a summary or the worst results from
 the latest CRAN checks.
-- `rpkg("foghorn")` provide functions to query the CRAN checks based on
+- `r pkg("foghorn")` provide functions to query the CRAN checks based on
 maintainer email or package name, as well as checking where a package is in the
 CRAN incoming or Winbuilder queues.
 - [cransays](https://r-hub.github.io/cransays/articles/dashboard.html) and
