@@ -524,7 +524,7 @@ debugging when there are namespace conflicts.
 
 - `r pkg("lifecycle")` helps to communicate changes in the lifecycle of
 functions, e.g., experimental to stable, or stable to deprecated.
-- `r github("ropensci/news")`, `r pkg("autonewsmd")` and `r pkg("fledge")` are designed to
+- `r pkg("newsmd")`, `r pkg("autonewsmd")` and `r pkg("fledge")` are designed to
 streamline the process of updating NEWS. `r pkg("fledge")` additionally
 supports versioning R packages developed in git repositories.
 - `r github("jumpingrivers/diffify")` facilitates comparison between different versions of CRAN
