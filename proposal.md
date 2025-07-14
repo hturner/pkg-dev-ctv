@@ -10,7 +10,7 @@ responding to changes in R and package dependencies.
 
 The essential tools for building and installing packages are provided as
 `R CMD` command line tools. Base R provides many relevant functions in
-`r pkg("utils")` alongside the `r pkg("tools")` package, which is dedicated to
+`utils` alongside the `tools` package, which is dedicated to
 package development and maintenance. Contributed packages provide alternative
 or supplementary helper functions.
 
@@ -86,7 +86,7 @@ WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-rele
 
 ### Development workflow
 
-Some contributed packages are analogous to `r pkg("tools")` in that
+Some contributed packages are analogous to `tools` in that
 they provide tools that cut across package development tasks.
 
 [Writing R Extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
@@ -98,7 +98,6 @@ See the [Links](#links) section for other guides, including those from
 
 - `r pkg("devtools", priority = "core")` facilitates interactive development of R and compiled code via the `load_all()` function to simulate installing and reloading the package. Additional functions support generating documentation, testing, checking a package and submitting to CRAN.
 - `r pkg("usethis", priority = "core")` provides helpers to add new components such as `use_r()`, `use_data()`, `use_vignette()`, or `use_news_md()`, along with functions to support specific packages or workflows, such as `use_testthat()` or `use_git()`.
-- `r pkg("pkgmaker")` provides utilities for working with package-specific options, registry objects (as defined by `r pkg("registry")`), vignettes, unit tests and BibTeX. Serves as an incubator for tools that may later be packaged separately.
 - `r pkg("packager")` performs package development tasks (document, build, check, etc) with `r pkg("fakemake")` or GNU make, so that make targets are only regenerated when files in the make chain have been updated. Provides a `create()` function to initialize a package with the required structure and an `infect()` function to work with a package initialized another way. The `r github("ComputationalProteomicsUnit/maker")` repository provides an external Makefile to perform development tasks.
 - `r github("rdatsci/rtcl")` provides command line utilities for development tasks, which are also provided as regular R functions.
 - `r github("unDocUMeantIt/roxyPackage")` provides the `roxy.package()` function to generate help files, vignettes and package-level documentation (e.g., NEWS and README) in both PDF and HTML; check and build packages, and manage a local package repository. Tasks can be performed individually or in combination.
@@ -144,7 +143,7 @@ WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manual
 
 - `r pkg("pkgdown", priority = "core")` generates a package website based on standard documentation files with the option to complement this with additional content, such as externally hosted `r pkg("learnr")` tutorials. There are helpers for deploying the site on GitHub Pages.
 - `r pkg("altdoc")` is designed as a lightweight alternative to `r pkg("pkgdown")` with support for many documentation generators, including Quarto, Docute, Docsify, and MkDocs.
-- `r pkg("ropenscilabs/r2readthedocs")` converts package documentation to a Read the Docs website.
+- `r github("ropenscilabs/r2readthedocs")` converts package documentation to a Read the Docs website.
 - `r pkg("rdoxygen")` creates Doxygen documentation for C++ code in packages, optionally made available as a vignette.
 
 ### Package metadata and information files
@@ -225,7 +224,7 @@ a package-specific prefix, but there are several packages that provide more
 refined and robust management of options.
 
 - `r pkg("options")` provides helpers to define and document package-specific options, managed via `base::options()`, with corresponding environment variables. The options can be set globally or locally (e.g., within a function).
-- `r pkg("GlobalOption")` provides similar functionality to `r pkg("options")`, with extra features such as option validation, setting options as functions of other options, and secret or read-only options.
+- `r pkg("GlobalOptions")` provides similar functionality to `r pkg("options")`, with extra features such as option validation, setting options as functions of other options, and secret or read-only options.
 - `r pkg("potions")` provides the `brew()` and `pour()` functions, that can be used to store and retrieve package-specific global options, without over-writing any global options of the same name.
 - `r pkg("settings")` allows to set up a package-specific options manager, for setting global or local options, with optional validation rules.
 - `r pkg("futile.options")` allows to set up a package-specific options manager for global options.
@@ -255,8 +254,7 @@ and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` c
 used to check translation files for inconsistently formatted strings.
 
 - `r pkg("potools", priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
-- Alternative mechanisms for localization of R messages are provided by `r pkg("stranslate")`
-and `r pkg("translated")`, using plain text and JSON files respectively.
+- `r pkg("stranslate")` provides an alternative mechanism for localization of R messages using plain text.
 - `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
 
 ### Building and installing a source package
@@ -266,7 +264,7 @@ The standard tools to build and install a package are `R CMD build` and
 
 - `r pkg("pkgbuild")` provides the `build()` function to build R packages and has several utilities to facilitate building packages with compiled code.
 - `r pkg("pkgload")` simulates the process of installing a package and then attaching it, enabling rapid iterative development.
-- There are many packages to facilitate installing packages from remote source code repositories, including those hosted on platforms like GitHub or GitLab. `r pkg("remotes")` has no dependencies and will install packages from any git or subversion repository accessible from a URL, with helpers for specific cases. In particular, `remotes::install_bioc()` can be used to install the development version of a Bioconductor package. `r pkg{"ipkg"}` depends on remotes and facilitates installing GitHub packages using a proxy website, if you don't have access to GitHub.
+- There are many packages to facilitate installing packages from remote source code repositories, including those hosted on platforms like GitHub or GitLab. `r pkg("remotes")` has no dependencies and will install packages from any git or subversion repository accessible from a URL, with helpers for specific cases. In particular, `remotes::install_bioc()` can be used to install the development version of a Bioconductor package. `r pkg("ipkg")` depends on remotes and facilitates installing GitHub packages using a proxy website, if you don't have access to GitHub.
 
 ### Checking a package
 
@@ -433,7 +431,7 @@ create documentation with `r pkg("roxygen2")`, lint R code with
 - `r pkg("usethis")` provides `use_github_action()` to facilitate using the example
 workflows from [r-lib/actions](https://github.com/r-lib/actions) on the
 GitHub repository for a package.
-- `r pkg("biocthis")` provides `use_bioc_github_action()` to set up
+- `r bioc("biocthis")` provides `use_bioc_github_action()` to set up
 Bioconductor-friendly GitHub actions. The default workflow is equivalent to
 `check-standard.yaml` from r-lib/actions, and this can be extended with optional steps
 such as running tests and building a `r pkg("pkgdown")` site.
@@ -450,10 +448,10 @@ package installed to a container registry such as DockerHub.
 pipelines. There is a template that runs `R CMD check`, computes
 test coverage with `r pkg("covr")` and then deploys the `r pkg("pkgdown")`
 site for a package.
-- `r pkg("tic")` steps through setting up CI workflows on different systems,
+- `r github("ropensci/tic")` steps through setting up CI workflows on different systems,
 with GitHub Actions and CircleCI currently supported. For R packages, the
 workflow will run `R CMD check`, and optionally compute test coverage and
-build a pkgdown site. `r pkg("tic")` builds on `r pkg("circle")`, which
+build a pkgdown site. `r github("ropensci/tic")` builds on `r pkg("circle")`, which
 provides low-level access to the Circle CI API, e.g. to restart builds.
 - [Codeberg CI/examples](https://codeberg.org/Codeberg-CI/examples/src/branch/main/R/.woodpecker.yaml)
 includes an example workflow for running `R CMD check` on an R package with
@@ -526,10 +524,10 @@ debugging when there are namespace conflicts.
 
 - `r pkg("lifecycle")` helps to communicate changes in the lifecycle of
 functions, e.g., experimental to stable, or stable to deprecated.
-- `r pkg("news")`, `r pkg("autonewsmd")` and `r pkg("fledge")` are designed to
+- `r pkg("newsmd")`, `r pkg("autonewsmd")` and `r pkg("fledge")` are designed to
 streamline the process of updating NEWS. `r pkg("fledge")` additionally
 supports versioning R packages developed in git repositories.
-- `r pkg("diffify")` facilitates comparison between different versions of CRAN
+- `r github("jumpingrivers/diffify")` facilitates comparison between different versions of CRAN
 packages, reporting changes in the NEWS, dependencies, namespace or functions.
 - `r pkg("remotes")` provides `install_version()` to install a particular
 version of a package, while `r pkg("dateback")` can be used to install
