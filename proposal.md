@@ -254,7 +254,7 @@ and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` c
 used to check translation files for inconsistently formatted strings.
 
 - `r pkg("potools", priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
-- Alternative mechanisms for localization of R messages is provided by `r pkg("stranslate")` using plain text.
+- `r pkg("stranslate")` provides an alternative mechanism for localization of R messages using plain text.
 - `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
 
 ### Building and installing a source package
