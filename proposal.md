@@ -209,7 +209,6 @@ Other packages focused on specific areas:
 
 - `r pkg("gdiff")` and `r pkg("vdiffr")` provide helpers for visual tests on graphical output. vdiffr integrates with testthat and provides a Shiny app to manage test cases.
 - `r pkg("shinytest2")` provides a testing framework for Shiny applications.
-- `r pkg("mcunit")` helps with unit testing MCMC methods.
 - `r pkg("checkmate")` and `r pkg("testdat")` package which extend testthat for data structures unit testing.
 
 #### Code coverage
