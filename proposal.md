@@ -17,7 +17,7 @@ or supplementary helper functions.
 The definitive reference for R package development is the [Writing R
 Extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
 (WRE) manual. The [CRAN Repository Policy](https://cran.r-project.org/web/packages/policies.html) sets standards on top of
-this - see [Links](#links) for policies of other repositories.
+this - see [Links] for policies of other repositories.
 
 Contributed packages designed to facilitate package development are not
 guaranteed to be consistent with WRE or repository policies. Particular caution
@@ -150,7 +150,7 @@ WRE reference: [Writing package vignettes](https://cran.r-project.org/doc/manual
 
 `tools::CRAN_package_db()` returns a data frame with character columns containing most `DESCRIPTION` metadata for the current packages in the CRAN package repository.
 
-`utils::NEWS()` can be used to extract the NEWS for a package and display it in a browser.
+`utils::news(package = "pkg")` can be used to extract the NEWS for a package and display it in a browser.
 
 - `r pkg("desc")` provides tools to read, write, create, and manipulate DESCRIPTION files.
 - `r pkg("semver")` provides tools for operating on [semantic version strings](http://semver.org).
@@ -213,7 +213,7 @@ Other packages focused on specific areas:
 
 #### Code coverage
 
-- `r pkg("covr", priority = "core")` track and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
+- `r pkg("covr", priority = "core")` tracks and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
 - `r pkg("covtracer")` links tested code to documentation, to evaluate coverage of documented behaviours.
 
 ### Package-specific options
@@ -392,7 +392,10 @@ compiled for use with ASAN, UBSAN or [gctorture](https://cran.r-project.org/doc/
 The [CRAN Cookbook](https://contributor.r-project.org/cran-cookbook/) is a
 guide written in collaboration with the CRAN Team that provides "recipes" for
 solving common issues in package code or documentation found during CRAN
-(re)-submission checks.
+(re)-submission checks. The appendix
+[R CMD check](https://r-pkgs.org/R-CMD-check.html) of the
+[R Packages book](https://r-pkgs.org/) describes the various checks performed by
+`R CMD check`.
 
 ## Maintenance
 
@@ -468,20 +471,20 @@ implicit use of base R functions (e.g. for compressing data objects).
 
 In time, a package may in turn be imported or suggested by another package,
 creating a reverse dependency. For CRAN packages, reverse dependencies are
-listed on the landing pages (of the form `⁠https://cran.r-project.org/package={PACKAGE}`).
+listed on the landing pages (of the form `https://cran.r-project.org/package={PACKAGE}`).
 Package authors should be aware of these packages that may be impacted as
 their package evolves. Note that CRAN permits dependencies on Bioconductor
 packages, as well as other repositories specified in the
 `Additional_repositories` field of the `DESCRIPTION` file.
 
-Forward or reverse dependencies may be identified with `tools::package_dependencies`,
-based on a package database like that returned by `utils::available.packages`.
+Forward or reverse dependencies may be identified with `tools::package_dependencies()`,
+based on a package database like that returned by `utils::available.packages()`.
 Dependencies from either CRAN or Bioconductor can be found by
 setting the `repos` argument of `utils::available.packages()` to `BiocManager::repositories()`.
 
-`utils::update.packages` is useful for updating dependencies when trying out changes to a package.
+`utils::update.packages()` is useful for updating dependencies when trying out changes to a package.
 
-`tools::check_packages_in_dir` can be used to check the reverse dependencies of a package (or set of packages).
+`tools::check_packages_in_dir()` can be used to check the reverse dependencies of a package (or set of packages).
 
 WRE reference: [Package Dependencies](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Package-Dependencies).
 
