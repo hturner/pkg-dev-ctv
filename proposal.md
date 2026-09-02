@@ -209,13 +209,12 @@ Other packages focused on specific areas:
 
 - `r pkg("gdiff")` and `r pkg("vdiffr")` provide helpers for visual tests on graphical output. vdiffr integrates with testthat and provides a Shiny app to manage test cases.
 - `r pkg("shinytest2")` provides a testing framework for Shiny applications.
-- `r pkg("mcunit")` helps with unit testing MCMC methods.
-- `r pkg("checkmate")` and `r pkg("testdat")` extend testthat for data structures unit testing.
+- `r pkg("checkmate")` and `r pkg("testdat")` package which extend testthat for data structures unit testing.
 
 #### Code coverage
 
-- `r pkg(covr, priority = "core")` tracks and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
-- `r pkg(covtracer)` links tested code to documentation, to evaluate coverage of documented behaviours.
+- `r pkg("covr", priority = "core")` track and reports code coverage of package tests and optionally uploads the results to a service like [Codecov](https://about.codecov.io) or [Coveralls](https://coveralls.io).
+- `r pkg("covtracer")` links tested code to documentation, to evaluate coverage of documented behaviours.
 
 ### Package-specific options
 
@@ -503,8 +502,8 @@ optimizing package dependencies.
 - `r pkg("pkgdepends")` can be used to identify, visualize and install package
 dependencies, including those specified via `Remotes` in the DESCRIPTION,
 for packages on CRAN, Bioconductor, and git repositories.
-- `r pkg("pkggraph")`, `r pkg("pkgnet)`, `r pkg("deepdep")`, `r pkg("crandep")`
-and `r pkg("cranly")` provide functionality to visualise package dependencies.
+- `r pkg("pkggraph")`, `r pkg("pkgnet")`, `r pkg("deepdep")`, `r pkg("crandep")`
+and `r pkg("cranly")` provide  functionality to visualise package dependencies.
 - `r pkg("pkgdepR")` can be used to create interactive visualisations of
 dependencies between functions across packages.
 - `r pkg("checked")` and `r pkg("prrd")` are designed to run reverse
@@ -513,7 +512,6 @@ alternative on GitHub with the same aim; `usethis::use_revdep()` sets up a
 package to work with `r github("r-lib/revdepcheck")`.
 - [r-devel/recheck](https://github.com/r-devel/recheck) provides a GitHub
 Action to run reverse dependency checks.
-- `r pkg("ThankYouStars")` can be used to star your dependencies on GitHub.
 
 ### Managing changes
 
