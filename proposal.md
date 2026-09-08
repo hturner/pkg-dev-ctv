@@ -77,7 +77,7 @@ WRE reference: [Package Structure](https://cran.r-project.org/doc/manuals/r-rele
 - `Rcpp.package.skeleton()` from `r pkg("Rcpp")` extends `package.skeleton()` to add the components required to use `r pkg("Rcpp")` for interfacing C or C++ code in R packages. `r pkg("usethis")` provide similar functionality with the `use_c()` and `use_rcpp()` functions.
 - `r bioc("biocthis")` automates setup for Bioconductor packages.
 - `r github("insightsengineering/r.pkg.template")` initializes a GitHub repository for an R package, with the standard files and directories, along with CI/CD configurations and pre-commit git hooks to identify and resolve common issues.
-- `r pkg("fusen")` and `r github("jacobbien/litr-project")` create a package from a R markdown file. `r pkg("noweb")` create a package via literate programming with noweb syntax (as used by Sweave).
+- `r pkg("fusen")` and `r github("jacobbien/litr-project")` create a package from a R markdown file. `r pkg("noweb")` creates a package via literate programming with noweb syntax (as used by Sweave).
 - `r pkg("DataPackageR")` creates a package from a dataset. `r pkg("rcompendium")` creates the structure for a Research Compendium: an R package structure to support reproducible research including raw data, analysis scripts, outputs and a make script.
 - `r pkg("leprechaun")` adds templating code to a package skeleton for creating a Shiny app as a package, without adding to the dependencies. `r pkg("golem")` creates a package template for developing and deploying a Shiny app using the `r pkg("golem")` framework.
 - `r pkg("pkgverse")` creates a meta package that bundles several related packages that can be installed and loaded together.
@@ -252,12 +252,11 @@ Localization in R uses GNU `gettext` as described in the notes on [Translating R
 and updates corresponding PO (`.po`) files as required. `tools::checkPoFile()` can be
 used to check translation files for inconsistently formatted strings.
 
+WRE reference: [Internationalization](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Internationalization)
+
 - `r pkg("potools", priority = "core")` provides helpers to create/update `.pot` and `.po` files, compile the `.po` files for distribution in a package, and run diagnostics to detect issues, e.g., untranslated messages due to inappropriate R/C code.
 - `r pkg("stranslate")` provides an alternative mechanism for localization of R messages using plain text.
 - `r github("eliocamp/rhelpi18n")` provides experimental support for localization of help pages, based on YAML files provided by companion packages.
-
-The R Contribution Working Group has a [website](https://contributor.r-project.org/translations/)
-with an overview how to help with translating R messages.
 
 ### Building and installing a source package
 
@@ -392,10 +391,7 @@ compiled for use with ASAN, UBSAN or [gctorture](https://cran.r-project.org/doc/
 The [CRAN Cookbook](https://contributor.r-project.org/cran-cookbook/) is a
 guide written in collaboration with the CRAN Team that provides "recipes" for
 solving common issues in package code or documentation found during CRAN
-(re)-submission checks. The appendix
-[R CMD check](https://r-pkgs.org/R-CMD-check.html) of the
-[R Packages book](https://r-pkgs.org/) describes the various checks performed by
-`R CMD check`.
+(re)-submission checks.
 
 ## Maintenance
 
