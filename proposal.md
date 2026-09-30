@@ -456,6 +456,8 @@ with GitHub Actions and CircleCI currently supported. For R packages, the
 workflow will run `R CMD check`, and optionally compute test coverage and
 build a pkgdown site. `r github("ropensci/tic")` builds on `r pkg("circle")`, which
 provides low-level access to the Circle CI API, e.g. to restart builds.
+- [r-ci](https://eddelbuettel.github.io/r-ci/) provides a shell script for 
+portable CI that can be used with GitHub actions, CircleCI, Docker, etc.
 - [Codeberg CI/examples](https://codeberg.org/Codeberg-CI/examples/src/branch/main/R/.woodpecker.yaml)
 includes an example workflow for running `R CMD check` on an R package with
 Woodpecker CI.
