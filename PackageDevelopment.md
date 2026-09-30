@@ -1,6 +1,14 @@
-# Package Development and Maintenance
+---
+name: PackageDevelopment
+topic: Package Development and Maintenance
+maintainer: Lluís Revilla, Heather Turner
+email: TBC
+version: 2026-09-30
+source: https://github.com/cran-task-views/PackageDevelopment/
+---
 
-Contributors: Roger Bivand, Heather Turner, Lluís Revilla
+The maintainers gratefully acknowledge the initial work on this task view 
+by Roger Bivand.
 
 ## Introduction
 
@@ -28,8 +36,6 @@ authors and for authors of any reverse dependencies.
 To assist package developers, this task view collates contributed packages with
 reference to relevant sections of WRE, highlighting relevant functionality from
 base/recommended packages before alternative/supplementary tools.
-
-If you think that some package is missing from the task view, please file an issue in the GitHub repository or contact the maintainer(s).
 
 ## First steps
 
